@@ -10,7 +10,7 @@ namespace GameOfLife {
 
         int x;
         int y;
-        Graphics g;
+        public Graphics g;
         int width;
         int height;
         Grid grid;
@@ -26,7 +26,7 @@ namespace GameOfLife {
             this.width = width;
             this.height = height;
 
-            widthPerCell = height / grid.height;
+            widthPerCell = (float) height / (float) grid.height;
         }
 
         public void DrawGrid() {
@@ -54,10 +54,11 @@ namespace GameOfLife {
 
         }
 
-        public void drawBorders() {
+        public void DrawBorders() {
 
             blackPen = new Pen(Color.Black);
             blackPen.Width = widthPerCell / 25;
+;
 
             for(int i = 0; i < grid.height + 1; i++) {
                 g.DrawLine(blackPen, 0, i * widthPerCell, width, i * widthPerCell);

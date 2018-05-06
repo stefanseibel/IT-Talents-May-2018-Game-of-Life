@@ -22,7 +22,7 @@ namespace GameOfLife {
         public Form1() {
             InitializeComponent();
 
-            grid = new Grid(10,10);
+            grid = new Grid(6,6);
 
         }
 
@@ -31,6 +31,9 @@ namespace GameOfLife {
             
             this.gridPanel.Paint += new PaintEventHandler(gridPanel_Paint);
 
+            this.Paint += new PaintEventHandler(Form1_Paint);
+
+            this.Refresh();
         }
 
         private void gridPanel_Paint(object sender, System.Windows.Forms.PaintEventArgs e) {
@@ -40,10 +43,8 @@ namespace GameOfLife {
             gd = new GridDrawing(this.grid, g, 0, 0, this.gridPanel.Width, this.gridPanel.Height);
 
             gd.DrawGrid();
-            gd.drawBorders();
+            gd.DrawBorders();
 
-
-            this.Paint += new PaintEventHandler(Form1_Paint);
         }
 
 
@@ -70,23 +71,26 @@ namespace GameOfLife {
 
 
         private void gridPanel_MouseClick(object sender, MouseEventArgs e) {
-            int posX = e.X / (int)gd.widthPerCell;
-            int posY = e.Y / (int)gd.widthPerCell;
 
-            try {
-                grid.field[posY, posX] = !grid.field[posY, posX];
+            if (!checkBoxLockField.Checked) {
+                float posX = (float)e.X / gd.widthPerCell;
+                float posY = (float)e.Y / gd.widthPerCell;
 
-            } catch {
-                //prevents Crash when clicking on the edge of the board due to rounding errors
-                
+                Console.WriteLine("a " + e.X.ToString() + " " + gd.widthPerCell.ToString() + " " + posX.ToString());
+
+
+
+
+                grid.field[(int)posY, (int)posX] = !grid.field[(int)posY, (int)posX];
+
+
+
+                this.Refresh();
+
+                grid.oldGens.Clear();
+                grid.generation = 1;
+                labelGeneration.Text = grid.generation.ToString() + ". Generation";
             }
-
-            this.Refresh();
-
-            grid.oldGens.Clear();
-            grid.generation = 1;
-            labelGeneration.Text = grid.generation.ToString() + ". Generation";
-
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e) {
@@ -94,6 +98,19 @@ namespace GameOfLife {
             if (gd != null) {
                 e.Graphics.DrawRectangle(new Pen(Color.Black, gd.widthPerCell / 25), gridPanel.Location.X, gridPanel.Location.Y, gridPanel.Width, gridPanel.Height);
             }
+            
+        }
+
+        private void button1_Click_1(object sender, EventArgs e) {
+
+            this.CreateGraphics().Clear(Color.White);
+            this.gridPanel.CreateGraphics().Clear(Color.White);
+            
+            this.grid = new Grid(int.Parse(textBoxWidth.Text), int.Parse(textBoxHeight.Text));
+            labelGeneration.Text = grid.generation.ToString() + ". Generation";
+
+
+            this.Refresh();
         }
     }
 }

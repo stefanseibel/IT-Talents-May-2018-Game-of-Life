@@ -32,6 +32,9 @@ namespace GameOfLife {
             this.gridPanel = new System.Windows.Forms.Panel();
             this.labelGeneration = new System.Windows.Forms.Label();
             this.checkBoxLockField = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBoxHeight = new System.Windows.Forms.TextBox();
+            this.textBoxWidth = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // buttonClear
@@ -83,7 +86,7 @@ namespace GameOfLife {
             // labelGeneration
             // 
             this.labelGeneration.AutoSize = true;
-            this.labelGeneration.Location = new System.Drawing.Point(779, 437);
+            this.labelGeneration.Location = new System.Drawing.Point(778, 437);
             this.labelGeneration.Name = "labelGeneration";
             this.labelGeneration.Size = new System.Drawing.Size(71, 13);
             this.labelGeneration.TabIndex = 3;
@@ -99,18 +102,53 @@ namespace GameOfLife {
             this.checkBoxLockField.Text = "lock field";
             this.checkBoxLockField.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(250)))), ((int)(((byte)(131)))));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(708, 506);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(159, 37);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "New Grid";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // textBoxHeight
+            // 
+            this.textBoxHeight.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxHeight.Location = new System.Drawing.Point(554, 512);
+            this.textBoxHeight.Name = "textBoxHeight";
+            this.textBoxHeight.Size = new System.Drawing.Size(142, 27);
+            this.textBoxHeight.TabIndex = 6;
+            // 
+            // textBoxWidth
+            // 
+            this.textBoxWidth.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxWidth.Location = new System.Drawing.Point(406, 512);
+            this.textBoxWidth.Name = "textBoxWidth";
+            this.textBoxWidth.Size = new System.Drawing.Size(142, 27);
+            this.textBoxWidth.TabIndex = 7;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1231, 555);
+            this.Controls.Add(this.textBoxWidth);
+            this.Controls.Add(this.textBoxHeight);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.checkBoxLockField);
             this.Controls.Add(this.labelGeneration);
             this.Controls.Add(this.gridPanel);
             this.Controls.Add(this.buttonNextGen);
             this.Controls.Add(this.buttonClear);
             this.DoubleBuffered = true;
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -130,6 +168,9 @@ namespace GameOfLife {
         private System.Windows.Forms.Panel gridPanel;
         private System.Windows.Forms.Label labelGeneration;
         private System.Windows.Forms.CheckBox checkBoxLockField;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBoxHeight;
+        private System.Windows.Forms.TextBox textBoxWidth;
     }
 }
 
