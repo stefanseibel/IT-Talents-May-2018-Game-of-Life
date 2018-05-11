@@ -31,11 +31,10 @@ namespace GameOfLife {
 
             uiControl = new UIControl(this, grid);
 
-            this.gridX = 100;
-            gridY = 100;
-            gridWidth = 300;
-            gridHeight = 300;
-
+            this.gridX = 50;
+            gridY = 50;
+            gridWidth = 0;
+            gridHeight = 0;
         }
 
         private void Form1_Load(object sender, EventArgs e) {
@@ -51,7 +50,7 @@ namespace GameOfLife {
             
             g = e.Graphics;
 
-            gd = new GridDrawing(this.grid, g, 100, 100, 300, 300);
+            gd = new GridDrawing(this.grid, g, 50, 50, this.Width - 100, this.Height - 250);
 
             gd.DrawGrid();
             gd.DrawBorders();
@@ -70,6 +69,7 @@ namespace GameOfLife {
 
         }
 
+       
         private void Form1_MouseClick(object sender, MouseEventArgs e) {
 
             uiControl.SetCell(e.X, e.Y);

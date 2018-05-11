@@ -45,23 +45,22 @@ namespace GameOfLife {
 
         }
 
+        
         public void SetCell(int x, int y) {
-            if (form.gridX < x && x < (form.gridX + form.gridWidth) && form.gridY < y && y < (form.gridY + form.gridHeight)) {
+            
+            if (form.gridX < x && x < (form.gridX + form.gd.width) && form.gridY < y && y < (form.gridY + form.gd.height)) {
 
                 if (!form.checkBoxLockField.Checked) {
                     float posX = ((float) x - form.gridX) / form.gd.widthPerCell;
                     float posY = ((float) y - form.gridY) / form.gd.widthPerCell;
 
-
                     grid.field[(int)posY, (int)posX] = !grid.field[(int)posY, (int)posX];
-
-
-
-                    form.Invalidate();
-
+                    
                     grid.oldGens.Clear();
                     grid.generation = 1;
-                    form.labelGeneration.Text = grid.generation.ToString() + ". Generation";
+
+                    form.Invalidate();
+                    
                 }
             }
         }

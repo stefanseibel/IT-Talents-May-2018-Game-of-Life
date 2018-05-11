@@ -11,8 +11,8 @@ namespace GameOfLife {
         int x;
         int y;
         public Graphics g;
-        int width;
-        int height;
+        public int width;
+        public int height;
         public Grid grid;
         public float widthPerCell;
 
@@ -26,7 +26,7 @@ namespace GameOfLife {
             this.width = width;
             this.height = height;
 
-            widthPerCell = (float) height / (float) grid.height;
+            widthPerCell = RecommendedWidth();
         }
 
         public void DrawGrid() {
@@ -45,7 +45,7 @@ namespace GameOfLife {
                     if (grid.field[i, j]) {
 
                         RectangleF rectangle = new RectangleF(x + j * widthPerCell, y + i * widthPerCell, widthPerCell, widthPerCell);
-                        rectangles[i * yCells + j] = rectangle;
+                        rectangles[j * yCells + i] = rectangle;
                     }
                 }
             }
@@ -66,6 +66,21 @@ namespace GameOfLife {
 
             for (int i = 0; i < grid.width + 1; i++) {
                 g.DrawLine(blackPen, i * widthPerCell + x, y, i * widthPerCell + x, height + y);
+            }
+        }
+
+        private float RecommendedWidth() {
+
+            float heightPerCell = (float) height / (float) grid.height;
+            float widthPerCell = (float) width / (float) grid.width;
+
+            if (heightPerCell < widthPerCell) {
+                this.width = (int) heightPerCell * grid.width;
+                return heightPerCell;
+            } else {
+
+                this.height = (int) widthPerCell * grid.height;
+                return widthPerCell;
             }
         }
     }

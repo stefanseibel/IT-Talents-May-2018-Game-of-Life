@@ -34,6 +34,8 @@ namespace GameOfLife {
             this.buttonNewGrid = new System.Windows.Forms.Button();
             this.textBoxHeight = new System.Windows.Forms.TextBox();
             this.textBoxWidth = new System.Windows.Forms.TextBox();
+            this.trackBarGen = new System.Windows.Forms.TrackBar();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarGen)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonClear
@@ -123,12 +125,20 @@ namespace GameOfLife {
             this.textBoxWidth.Size = new System.Drawing.Size(142, 27);
             this.textBoxWidth.TabIndex = 7;
             // 
+            // trackBarGen
+            // 
+            this.trackBarGen.Location = new System.Drawing.Point(12, 437);
+            this.trackBarGen.Name = "trackBarGen";
+            this.trackBarGen.Size = new System.Drawing.Size(684, 45);
+            this.trackBarGen.TabIndex = 8;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1231, 555);
+            this.Controls.Add(this.trackBarGen);
             this.Controls.Add(this.textBoxWidth);
             this.Controls.Add(this.textBoxHeight);
             this.Controls.Add(this.buttonNewGrid);
@@ -144,6 +154,7 @@ namespace GameOfLife {
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseClick);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarGen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,6 +171,7 @@ namespace GameOfLife {
         private System.Windows.Forms.Button buttonNewGrid;
         public System.Windows.Forms.TextBox textBoxHeight;
         public System.Windows.Forms.TextBox textBoxWidth;
+        private System.Windows.Forms.TrackBar trackBarGen;
     }
 }
 
