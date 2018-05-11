@@ -20,12 +20,11 @@ namespace GameOfLife {
         public void NextGeneration() {
             for (int i = 0; i < 1; i++) {
                 this.grid.NextGeneration();
-                form.grid.PrintField();
             }
 
-            form.labelGeneration.Text = grid.generation.ToString() + ". Generation";
+            
 
-            form.Refresh();
+            form.Invalidate();
         }
 
         public void ClearGrid() {
@@ -39,10 +38,10 @@ namespace GameOfLife {
                 }
             }
 
-            form.labelGeneration.Text = grid.generation.ToString() + ". Generation";
+            grid.generation = 1;
+            grid.oldGens.Clear();
 
-
-            form.Refresh();
+            form.Invalidate();
 
         }
 
@@ -58,7 +57,7 @@ namespace GameOfLife {
 
 
 
-                    form.Refresh();
+                    form.Invalidate();
 
                     grid.oldGens.Clear();
                     grid.generation = 1;
@@ -79,7 +78,7 @@ namespace GameOfLife {
             form.labelGeneration.Text = grid.generation.ToString() + ". Generation";
 
 
-            form.Refresh();
+            form.Invalidate();
         }
     }
 }

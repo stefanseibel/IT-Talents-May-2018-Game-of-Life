@@ -42,7 +42,7 @@ namespace GameOfLife {
 
             this.Paint += new PaintEventHandler(Form1_Paint);
 
-            this.Refresh();
+            this.Invalidate();
         }
 
 
@@ -56,7 +56,7 @@ namespace GameOfLife {
             gd.DrawGrid();
             gd.DrawBorders();
 
-            
+            labelGeneration.Text = grid.generation.ToString() + ". Generation";
 
         }
 
