@@ -16,7 +16,10 @@ namespace GameOfLife {
         public Grid grid;
         public float widthPerCell;
 
-        public Pen blackPen;
+        Pen pinkPen = new Pen(Color.Pink);
+
+        Pen blackPen = new Pen(Color.Black);
+        
 
         public GridDrawing(Grid grid, Graphics g, int x, int y, int width, int height) {
             this.grid = grid;
@@ -27,47 +30,37 @@ namespace GameOfLife {
             this.height = height;
 
             widthPerCell = RecommendedWidth();
+
+            blackPen.Width = (int)widthPerCell / 50 * 2;
         }
 
         public void DrawGrid() {
 
-            Pen pinkPen = new Pen(Color.Pink);
+            int halfWidth = (int)blackPen.Width / 2;
 
-            int xCells = grid.width;
-            int yCells = grid.height;
+            int finalWidthPerCell = (int) widthPerCell;
 
-            RectangleF[] rectangles = new RectangleF[xCells * yCells];
+            
+            for (int i = 0; i < grid.height; i++) {
 
-            for (int i = 0; i < yCells; i++) {
+                for (int j = 0; j < grid.width; j++) {
 
-                for (int j = 0; j < xCells; j++) {
+                    Rectangle rect = new Rectangle(x + j * finalWidthPerCell + (int)blackPen.Width * j, y + i * finalWidthPerCell + (int)blackPen.Width * i, finalWidthPerCell, finalWidthPerCell);
 
                     if (grid.field[i, j]) {
-
-                        RectangleF rectangle = new RectangleF(x + j * widthPerCell, y + i * widthPerCell, widthPerCell, widthPerCell);
-                        rectangles[j * yCells + i] = rectangle;
+                        
+                        g.DrawRectangle(pinkPen, rect);
+                        g.FillRectangle(new SolidBrush(pinkPen.Color), rect);
                     }
+
+                    Rectangle border = new Rectangle(rect.X - halfWidth, rect.Y - halfWidth, rect.Width + (int)blackPen.Width, rect.Height + (int)blackPen.Width);
+                    g.DrawRectangle(blackPen, border);
+
+                    
                 }
             }
-            
-            g.FillRectangles(new SolidBrush(pinkPen.Color), rectangles);
-            
         }
 
-        public void DrawBorders() {
-
-            blackPen = new Pen(Color.Black);
-            blackPen.Width = widthPerCell / 25;
-;
-
-            for(int i = 0; i < grid.height + 1; i++) {
-                g.DrawLine(blackPen, x, i * widthPerCell + y, width + x, i * widthPerCell + y);
-            }
-
-            for (int i = 0; i < grid.width + 1; i++) {
-                g.DrawLine(blackPen, i * widthPerCell + x, y, i * widthPerCell + x, height + y);
-            }
-        }
 
         private float RecommendedWidth() {
 

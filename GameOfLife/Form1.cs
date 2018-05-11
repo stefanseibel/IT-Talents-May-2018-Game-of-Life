@@ -53,7 +53,6 @@ namespace GameOfLife {
             gd = new GridDrawing(this.grid, g, 50, 50, this.Width - 100, this.Height - 250);
 
             gd.DrawGrid();
-            gd.DrawBorders();
 
             labelGeneration.Text = grid.generation.ToString() + ". Generation";
 
