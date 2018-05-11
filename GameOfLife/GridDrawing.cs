@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 using System.Drawing;
 
 namespace GameOfLife {
-    class GridDrawing {
+    public class GridDrawing {
 
         int x;
         int y;
         public Graphics g;
         int width;
         int height;
-        Grid grid;
+        public Grid grid;
         public float widthPerCell;
 
         public Pen blackPen;
@@ -51,7 +51,7 @@ namespace GameOfLife {
             }
             
             g.FillRectangles(new SolidBrush(pinkPen.Color), rectangles);
-
+            
         }
 
         public void DrawBorders() {
@@ -61,11 +61,11 @@ namespace GameOfLife {
 ;
 
             for(int i = 0; i < grid.height + 1; i++) {
-                g.DrawLine(blackPen, 0, i * widthPerCell, width, i * widthPerCell);
+                g.DrawLine(blackPen, x, i * widthPerCell + y, width + x, i * widthPerCell + y);
             }
 
             for (int i = 0; i < grid.width + 1; i++) {
-                g.DrawLine(blackPen, i * widthPerCell, 0, i * widthPerCell, height);
+                g.DrawLine(blackPen, i * widthPerCell + x, y, i * widthPerCell + x, height + y);
             }
         }
     }

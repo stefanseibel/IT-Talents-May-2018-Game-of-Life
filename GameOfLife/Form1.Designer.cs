@@ -29,7 +29,6 @@ namespace GameOfLife {
             this.buttonClear = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.buttonNextGen = new System.Windows.Forms.Button();
-            this.gridPanel = new System.Windows.Forms.Panel();
             this.labelGeneration = new System.Windows.Forms.Label();
             this.checkBoxLockField = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -73,15 +72,6 @@ namespace GameOfLife {
             this.buttonNextGen.Text = "Next Generation";
             this.buttonNextGen.UseVisualStyleBackColor = false;
             this.buttonNextGen.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // gridPanel
-            // 
-            this.gridPanel.Location = new System.Drawing.Point(300, 50);
-            this.gridPanel.Name = "gridPanel";
-            this.gridPanel.Size = new System.Drawing.Size(400, 400);
-            this.gridPanel.TabIndex = 2;
-            this.gridPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.gridPanel_Paint);
-            this.gridPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.gridPanel_MouseClick);
             // 
             // labelGeneration
             // 
@@ -144,7 +134,6 @@ namespace GameOfLife {
             this.Controls.Add(this.button1);
             this.Controls.Add(this.checkBoxLockField);
             this.Controls.Add(this.labelGeneration);
-            this.Controls.Add(this.gridPanel);
             this.Controls.Add(this.buttonNextGen);
             this.Controls.Add(this.buttonClear);
             this.DoubleBuffered = true;
@@ -153,6 +142,7 @@ namespace GameOfLife {
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseClick);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -165,12 +155,11 @@ namespace GameOfLife {
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button buttonNextGen;
-        private System.Windows.Forms.Panel gridPanel;
-        private System.Windows.Forms.Label labelGeneration;
+        public System.Windows.Forms.Label labelGeneration;
         private System.Windows.Forms.CheckBox checkBoxLockField;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBoxHeight;
-        private System.Windows.Forms.TextBox textBoxWidth;
+        public System.Windows.Forms.TextBox textBoxHeight;
+        public System.Windows.Forms.TextBox textBoxWidth;
     }
 }
 

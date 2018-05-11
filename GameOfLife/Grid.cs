@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace GameOfLife {
-    class Grid {
+    public class Grid {
 
         public int generation;
         public bool[,] field;
