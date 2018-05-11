@@ -47,14 +47,22 @@ namespace GameOfLife {
 
         
         public void SetCell(int x, int y) {
-            
-            if (form.gridX < x && x < (form.gridX + form.gd.width) && form.gridY < y && y < (form.gridY + form.gd.height)) {
+
+            int totalWidth = grid.width * form.gd.widthPerCell + (grid.width) * (int)form.gd.blackPen.Width;
+            int totalHeight = grid.height * form.gd.widthPerCell + (grid.height) * (int)form.gd.blackPen.Width;
+
+            if (form.gridX < x && x < (form.gridX + totalWidth) && form.gridY < y && y < (form.gridY + totalHeight)) {
 
                 if (!form.checkBoxLockField.Checked) {
-                    float posX = ((float) x - form.gridX) / form.gd.widthPerCell;
-                    float posY = ((float) y - form.gridY) / form.gd.widthPerCell;
 
-                    grid.field[(int)posY, (int)posX] = !grid.field[(int)posY, (int)posX];
+                    
+                    int totalWidthPerCell = totalWidth / grid.width;
+                    int totalHeightPerCell = totalWidth / grid.height;
+
+                    int posX = (x - form.gridX) / totalWidthPerCell;
+                    int posY = (y - form.gridY) / totalWidthPerCell;
+                    
+                    grid.field[posY, posX] = !grid.field[posY, posX];
                     
                     grid.oldGens.Clear();
                     grid.generation = 1;

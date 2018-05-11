@@ -14,11 +14,11 @@ namespace GameOfLife {
         public int width;
         public int height;
         public Grid grid;
-        public float widthPerCell;
+        public int widthPerCell;
 
         Pen pinkPen = new Pen(Color.Pink);
 
-        Pen blackPen = new Pen(Color.Black);
+        public Pen blackPen = new Pen(Color.Black);
         
 
         public GridDrawing(Grid grid, Graphics g, int x, int y, int width, int height) {
@@ -62,17 +62,17 @@ namespace GameOfLife {
         }
 
 
-        private float RecommendedWidth() {
+        private int RecommendedWidth() {
 
-            float heightPerCell = (float) height / (float) grid.height;
-            float widthPerCell = (float) width / (float) grid.width;
+            int heightPerCell = height / grid.height;
+            int widthPerCell = width / grid.width;
 
             if (heightPerCell < widthPerCell) {
-                this.width = (int) heightPerCell * grid.width;
+                this.width = heightPerCell * grid.width;
                 return heightPerCell;
             } else {
 
-                this.height = (int) widthPerCell * grid.height;
+                this.height = widthPerCell * grid.height;
                 return widthPerCell;
             }
         }

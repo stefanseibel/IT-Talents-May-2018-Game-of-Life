@@ -78,7 +78,7 @@ namespace GameOfLife {
             // labelGeneration
             // 
             this.labelGeneration.AutoSize = true;
-            this.labelGeneration.Location = new System.Drawing.Point(778, 437);
+            this.labelGeneration.Location = new System.Drawing.Point(705, 437);
             this.labelGeneration.Name = "labelGeneration";
             this.labelGeneration.Size = new System.Drawing.Size(71, 13);
             this.labelGeneration.TabIndex = 3;
@@ -87,7 +87,7 @@ namespace GameOfLife {
             // checkBoxLockField
             // 
             this.checkBoxLockField.AutoSize = true;
-            this.checkBoxLockField.Location = new System.Drawing.Point(782, 399);
+            this.checkBoxLockField.Location = new System.Drawing.Point(884, 436);
             this.checkBoxLockField.Name = "checkBoxLockField";
             this.checkBoxLockField.Size = new System.Drawing.Size(68, 17);
             this.checkBoxLockField.TabIndex = 4;
