@@ -31,7 +31,7 @@ namespace GameOfLife {
             this.buttonNextGen = new System.Windows.Forms.Button();
             this.labelGeneration = new System.Windows.Forms.Label();
             this.checkBoxLockField = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonNewGrid = new System.Windows.Forms.Button();
             this.textBoxHeight = new System.Windows.Forms.TextBox();
             this.textBoxWidth = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
@@ -51,7 +51,7 @@ namespace GameOfLife {
             this.buttonClear.TabIndex = 0;
             this.buttonClear.Text = "Clear";
             this.buttonClear.UseVisualStyleBackColor = false;
-            this.buttonClear.Click += new System.EventHandler(this.button1_Click);
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // timer1
             // 
@@ -71,7 +71,7 @@ namespace GameOfLife {
             this.buttonNextGen.TabIndex = 1;
             this.buttonNextGen.Text = "Next Generation";
             this.buttonNextGen.UseVisualStyleBackColor = false;
-            this.buttonNextGen.Click += new System.EventHandler(this.button2_Click);
+            this.buttonNextGen.Click += new System.EventHandler(this.buttonNextGen_Click);
             // 
             // labelGeneration
             // 
@@ -92,20 +92,20 @@ namespace GameOfLife {
             this.checkBoxLockField.Text = "lock field";
             this.checkBoxLockField.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // buttonNewGrid
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(250)))), ((int)(((byte)(131)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(708, 506);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(159, 37);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "New Grid";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.buttonNewGrid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(250)))), ((int)(((byte)(131)))));
+            this.buttonNewGrid.FlatAppearance.BorderSize = 0;
+            this.buttonNewGrid.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNewGrid.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNewGrid.ForeColor = System.Drawing.Color.Black;
+            this.buttonNewGrid.Location = new System.Drawing.Point(708, 506);
+            this.buttonNewGrid.Name = "buttonNewGrid";
+            this.buttonNewGrid.Size = new System.Drawing.Size(159, 37);
+            this.buttonNewGrid.TabIndex = 5;
+            this.buttonNewGrid.Text = "New Grid";
+            this.buttonNewGrid.UseVisualStyleBackColor = false;
+            this.buttonNewGrid.Click += new System.EventHandler(this.buttonNewGrid_Click);
             // 
             // textBoxHeight
             // 
@@ -131,7 +131,7 @@ namespace GameOfLife {
             this.ClientSize = new System.Drawing.Size(1231, 555);
             this.Controls.Add(this.textBoxWidth);
             this.Controls.Add(this.textBoxHeight);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonNewGrid);
             this.Controls.Add(this.checkBoxLockField);
             this.Controls.Add(this.labelGeneration);
             this.Controls.Add(this.buttonNextGen);
@@ -156,8 +156,8 @@ namespace GameOfLife {
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button buttonNextGen;
         public System.Windows.Forms.Label labelGeneration;
-        private System.Windows.Forms.CheckBox checkBoxLockField;
-        private System.Windows.Forms.Button button1;
+        public System.Windows.Forms.CheckBox checkBoxLockField;
+        private System.Windows.Forms.Button buttonNewGrid;
         public System.Windows.Forms.TextBox textBoxHeight;
         public System.Windows.Forms.TextBox textBoxWidth;
     }

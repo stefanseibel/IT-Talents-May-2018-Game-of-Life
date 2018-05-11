@@ -21,7 +21,7 @@ namespace GameOfLife {
 
         UIControl uiControl;
 
-        int gridX, gridY, gridWidth, gridHeight;
+        public int gridX, gridY, gridWidth, gridHeight;
 
         public Form1() {
             InitializeComponent();
@@ -39,8 +39,6 @@ namespace GameOfLife {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-
-            
 
             this.Paint += new PaintEventHandler(Form1_Paint);
 
@@ -62,7 +60,7 @@ namespace GameOfLife {
 
         }
 
-        private void button1_Click(object sender, EventArgs e) {
+        private void buttonClear_Click(object sender, EventArgs e) {
             uiControl.ClearGrid();
         }
 
@@ -74,43 +72,17 @@ namespace GameOfLife {
 
         private void Form1_MouseClick(object sender, MouseEventArgs e) {
 
-            if (gridX < e.X && e.X < (gridX + gridWidth) && gridY < e.Y && e.Y < (gridY + gridHeight)){
-
-                if (!checkBoxLockField.Checked) {
-                    float posX = ((float)e.X - gridX) / gd.widthPerCell;
-                    float posY = ((float)e.Y - gridY) / gd.widthPerCell;
-                    
-
-                    grid.field[(int)posY, (int)posX] = !grid.field[(int)posY, (int)posX];
-
-
-
-                    this.Refresh();
-
-                    grid.oldGens.Clear();
-                    grid.generation = 1;
-                    labelGeneration.Text = grid.generation.ToString() + ". Generation";
-                }
-            }
+            uiControl.SetCell(e.X, e.Y);
         }
 
-        private void button2_Click(object sender, EventArgs e) {
+        private void buttonNextGen_Click(object sender, EventArgs e) {
             uiControl.NextGeneration();
         }
+        
 
+        private void buttonNewGrid_Click(object sender, EventArgs e) {
 
-
-
-
-        private void button1_Click_1(object sender, EventArgs e) {
-
-            this.CreateGraphics().Clear(Color.White);
-
-            this.grid = new Grid(int.Parse(textBoxWidth.Text), int.Parse(textBoxHeight.Text));
-            labelGeneration.Text = grid.generation.ToString() + ". Generation";
-
-
-            this.Refresh();
+            uiControl.NewGrid(int.Parse(textBoxWidth.Text), int.Parse(textBoxHeight.Text));
         }
     }
 }
