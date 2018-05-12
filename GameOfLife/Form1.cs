@@ -75,6 +75,8 @@ namespace GameOfLife {
         private void Form1_MouseClick(object sender, MouseEventArgs e) {
 
             uiControl.SetCell(e.X, e.Y);
+
+            Console.WriteLine(this.Height.ToString() + " " + e.Y.ToString());
         }
 
         private void trackBarGen_Scroll(object sender, EventArgs e) {
@@ -88,6 +90,24 @@ namespace GameOfLife {
                 currentField = grid.oldGens[this.trackBarGen.Value];
 
             }
+
+            this.Invalidate();
+        }
+
+        private void Form1_ResizeEnd(object sender, EventArgs e) {
+
+            int gap = 17; //px
+            int buttonWidth = 160;
+            int buttonHeight = 40;
+            
+            this.buttonClear.SetBounds(gap, this.Height - gap - buttonHeight - 40, buttonWidth, buttonHeight);
+            this.buttonNextGen.SetBounds(gap * 2 + buttonWidth, this.Height - gap - buttonHeight - 40, buttonWidth, buttonHeight);
+            this.buttonNewGrid.SetBounds(gap * 3 + buttonWidth * 2, this.Height - gap - buttonHeight - 40, buttonWidth, buttonHeight);
+            this.trackBarGen.SetBounds(gap, this.Height - gap * 2 - buttonHeight - trackBarGen.Height - 40, trackBarGen.Width, trackBarGen.Height);
+            this.numericUpDownWidth.SetBounds(gap * 4 + buttonWidth * 3, this.Height - gap - buttonHeight - 40, buttonWidth, buttonHeight);
+            this.numericUpDownHeight.SetBounds(gap * 5 + buttonWidth * 4, this.Height - gap - buttonHeight - 40, buttonWidth, buttonHeight);
+            this.checkBoxLockField.SetBounds(gap * 6 + buttonWidth * 5, this.Height - gap - buttonHeight - 40, buttonWidth, buttonHeight);
+            this.labelGeneration.SetBounds(gap * 6 + buttonWidth * 5, this.Height - gap - buttonHeight - 38 + checkBoxLockField.Height, buttonWidth, buttonHeight);
 
             this.Invalidate();
         }
@@ -110,7 +130,7 @@ namespace GameOfLife {
 
         private void buttonNewGrid_Click(object sender, EventArgs e) {
 
-            uiControl.NewGrid(int.Parse(textBoxWidth.Text), int.Parse(textBoxHeight.Text));
+            uiControl.NewGrid((int) numericUpDownWidth.Value, (int) numericUpDownHeight.Value);
         }
     }
 }
