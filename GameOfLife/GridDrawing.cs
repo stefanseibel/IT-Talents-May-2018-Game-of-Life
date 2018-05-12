@@ -13,7 +13,7 @@ namespace GameOfLife {
         public Graphics g;
         public int width;
         public int height;
-        public Grid grid;
+        public bool[,] grid;
         public int widthPerCell;
 
         Pen pinkPen = new Pen(Color.Pink);
@@ -21,7 +21,7 @@ namespace GameOfLife {
         public Pen blackPen = new Pen(Color.Black);
         
 
-        public GridDrawing(Grid grid, Graphics g, int x, int y, int width, int height) {
+        public GridDrawing(bool[,] grid, Graphics g, int x, int y, int width, int height) {
             this.grid = grid;
             this.g = g;
             this.x = x;
@@ -41,15 +41,14 @@ namespace GameOfLife {
             int finalWidthPerCell = (int) widthPerCell;
 
             
-            for (int i = 0; i < grid.height; i++) {
+            for (int i = 0; i < grid.GetLength(0); i++) {
 
-                for (int j = 0; j < grid.width; j++) {
+                for (int j = 0; j < grid.GetLength(1); j++) {
 
                     Rectangle rect = new Rectangle(x + j * finalWidthPerCell + (int)blackPen.Width * j, y + i * finalWidthPerCell + (int)blackPen.Width * i, finalWidthPerCell, finalWidthPerCell);
 
-                    if (grid.field[i, j]) {
+                    if (grid[i, j]) {
                         
-                        g.DrawRectangle(pinkPen, rect);
                         g.FillRectangle(new SolidBrush(pinkPen.Color), rect);
                     }
 
@@ -64,15 +63,15 @@ namespace GameOfLife {
 
         private int RecommendedWidth() {
 
-            int heightPerCell = height / grid.height;
-            int widthPerCell = width / grid.width;
+            int heightPerCell = height / grid.GetLength(0);
+            int widthPerCell = width / grid.GetLength(1);
 
             if (heightPerCell < widthPerCell) {
-                this.width = heightPerCell * grid.width;
+                this.width = heightPerCell * grid.GetLength(1);
                 return heightPerCell;
             } else {
 
-                this.height = widthPerCell * grid.height;
+                this.height = widthPerCell * grid.GetLength(0);
                 return widthPerCell;
             }
         }

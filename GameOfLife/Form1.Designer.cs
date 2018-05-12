@@ -131,6 +131,7 @@ namespace GameOfLife {
             this.trackBarGen.Name = "trackBarGen";
             this.trackBarGen.Size = new System.Drawing.Size(684, 45);
             this.trackBarGen.TabIndex = 8;
+            this.trackBarGen.Scroll += new System.EventHandler(this.trackBarGen_Scroll);
             // 
             // Form1
             // 
@@ -151,6 +152,7 @@ namespace GameOfLife {
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Invalidated += new System.Windows.Forms.InvalidateEventHandler(this.Form1_Invalidate);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseClick);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);

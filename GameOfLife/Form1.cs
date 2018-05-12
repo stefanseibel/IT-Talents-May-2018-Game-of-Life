@@ -23,11 +23,14 @@ namespace GameOfLife {
 
         public int gridX, gridY, gridWidth, gridHeight;
 
+        public bool[,] currentField;
+
         public Form1() {
             InitializeComponent();
 
             
             grid = new Grid(6,6);
+            currentField = grid.field;
 
             uiControl = new UIControl(this, grid);
 
@@ -50,11 +53,11 @@ namespace GameOfLife {
             
             g = e.Graphics;
 
-            gd = new GridDrawing(this.grid, g, 50, 50, this.Width - 100, this.Height - 250);
+            gd = new GridDrawing(currentField, g, 50, 50, this.Width - 100, this.Height - 250);
 
             gd.DrawGrid();
 
-            labelGeneration.Text = grid.generation.ToString() + ". Generation";
+            
 
         }
 
@@ -68,14 +71,40 @@ namespace GameOfLife {
 
         }
 
-       
+
         private void Form1_MouseClick(object sender, MouseEventArgs e) {
 
             uiControl.SetCell(e.X, e.Y);
         }
 
+        private void trackBarGen_Scroll(object sender, EventArgs e) {
+            
+            if(this.trackBarGen.Value == this.trackBarGen.Maximum) {
+
+                currentField = grid.field;
+
+            } else {
+
+                currentField = grid.oldGens[this.trackBarGen.Value];
+
+            }
+
+            this.Invalidate();
+        }
+
+        private void Form1_Invalidate(object sender, InvalidateEventArgs e) {
+
+            labelGeneration.Text = grid.generation.ToString() + ". Generation";
+
+            this.trackBarGen.Maximum = this.grid.oldGens.Count;
+        }
+
         private void buttonNextGen_Click(object sender, EventArgs e) {
             uiControl.NextGeneration();
+
+            this.currentField = this.grid.field;
+            this.trackBarGen.Invalidate();
+            this.trackBarGen.Value = this.trackBarGen.Maximum;
         }
         
 
