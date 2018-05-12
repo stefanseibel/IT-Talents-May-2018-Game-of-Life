@@ -80,6 +80,7 @@ namespace GameOfLife {
             //Bad Code, only temporary
             this.grid = new Grid(width, height);
             form.grid = grid;
+            form.currentField = grid.field;
             form.gd.grid = grid.field;
 
             form.labelGeneration.Text = grid.generation.ToString() + ". Generation";
