@@ -32,7 +32,7 @@ namespace GameOfLife {
             grid = new Grid(6,6);
             currentField = grid.field;
 
-            uiControl = new UIControl(this, grid);
+            uiControl = new UIControl(this, grid, currentField);
 
             this.gridX = 50;
             gridY = 50;

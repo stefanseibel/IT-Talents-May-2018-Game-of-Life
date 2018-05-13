@@ -11,10 +11,13 @@ namespace GameOfLife {
         public Grid grid;
         public Form1 form;
 
-        public UIControl(Form1 form, Grid grid) {
+        public bool[,] field;
+
+        public UIControl(Form1 form, Grid grid, bool[,] field) {
 
             this.grid = grid;
             this.form = form;
+            this.field = field;
         }
 
         public void NextGeneration() {
@@ -62,7 +65,7 @@ namespace GameOfLife {
                     int posX = (x - form.gridX) / totalWidthPerCell;
                     int posY = (y - form.gridY) / totalWidthPerCell;
                     
-                    grid.field[posY, posX] = !grid.field[posY, posX];
+                    field[posY, posX] = !grid.field[posY, posX];
                     
                     grid.oldGens.Clear();
                     grid.generation = 1;
