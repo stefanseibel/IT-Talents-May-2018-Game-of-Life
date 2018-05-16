@@ -7,9 +7,7 @@ using System.Windows.Controls;
 
 namespace GameOfLife {
     static class Program {
-
-        public static Grid grid;
-        public static bool[,] currentField;
+        
 
         /// <summary>
         /// Der Haupteinstiegspunkt für die Anwendung.

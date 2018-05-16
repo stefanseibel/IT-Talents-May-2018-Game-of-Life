@@ -54,9 +54,11 @@
     </Compile>
     <Compile Include="Grid.cs" />
     <Compile Include="GridDrawing.cs" />
+    <Compile Include="GridTab.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UIControl.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

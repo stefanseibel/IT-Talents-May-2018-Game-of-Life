@@ -1,33 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Drawing;
+using System.Windows.Forms;
 
 namespace GameOfLife {
-    class UIControl {
+    class GridTab : TabPage{
+
 
         public Grid grid;
         public Form1 form;
 
         public bool[,] field;
 
-        public UIControl(Form1 form, Grid grid, bool[,] field) {
+        public int border;
+
+        public GridTab(Form1 form, Grid grid, int border) {
 
             this.grid = grid;
             this.form = form;
-            this.field = field;
+            this.field = grid.field;
+            this.border = border;
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);
         }
 
         public void NextGeneration() {
             for (int i = 0; i < 1; i++) {
                 this.grid.NextGeneration();
             }
-
             
+            this.field = this.grid.field;
 
-            form.Invalidate();
+            this.Invalidate();
         }
 
         public void ClearGrid() {
@@ -43,53 +49,51 @@ namespace GameOfLife {
 
             grid.generation = 1;
             grid.oldGens.Clear();
-
+            field = grid.field;
             form.Invalidate();
 
         }
 
-        
+
         public void SetCell(int x, int y) {
 
             int totalWidth = grid.width * form.gd.widthPerCell + (grid.width) * (int)form.gd.blackPen.Width;
             int totalHeight = grid.height * form.gd.widthPerCell + (grid.height) * (int)form.gd.blackPen.Width;
 
-            if (form.gridX < x && x < (form.gridX + totalWidth) && form.gridY < y && y < (form.gridY + totalHeight)) {
+            if (border < x && x < (border + totalWidth) && border < y && y < (border + totalHeight)) {
 
                 if (!form.checkBoxLockField.Checked) {
 
-                    
+
                     int totalWidthPerCell = totalWidth / grid.width;
                     int totalHeightPerCell = totalWidth / grid.height;
 
-                    int posX = (x - form.gridX) / totalWidthPerCell;
-                    int posY = (y - form.gridY) / totalWidthPerCell;
-                    
+                    int posX = (x - border) / totalWidthPerCell;
+                    int posY = (y - border) / totalWidthPerCell;
+
                     field[posY, posX] = !grid.field[posY, posX];
-                    
+
                     grid.oldGens.Clear();
                     grid.generation = 1;
 
-                    form.Invalidate();
-                    
+                    this.Invalidate();
+
                 }
             }
         }
 
         public void NewGrid(int width, int height) {
-            
-            form.CreateGraphics().Clear(Color.White);
 
-            //Bad Code, only temporary
+            this.CreateGraphics().Clear(Color.White);
+            
             this.grid = new Grid(width, height);
-            form.grid = grid;
-            form.currentField = grid.field;
+            this.field = grid.field;
             form.gd.grid = grid.field;
 
             form.labelGeneration.Text = grid.generation.ToString() + ". Generation";
 
 
-            form.Invalidate();
+            this.Invalidate();
         }
     }
 }

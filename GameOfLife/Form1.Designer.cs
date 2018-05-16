@@ -35,6 +35,7 @@ namespace GameOfLife {
             this.trackBarGen = new System.Windows.Forms.TrackBar();
             this.numericUpDownWidth = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownHeight = new System.Windows.Forms.NumericUpDown();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarGen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHeight)).BeginInit();
@@ -134,12 +135,22 @@ namespace GameOfLife {
             this.numericUpDownHeight.Size = new System.Drawing.Size(159, 20);
             this.numericUpDownHeight.TabIndex = 10;
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Location = new System.Drawing.Point(18, 16);
+            this.tabControl1.Multiline = true;
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1125, 418);
+            this.tabControl1.TabIndex = 11;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1231, 561);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.numericUpDownHeight);
             this.Controls.Add(this.numericUpDownWidth);
             this.Controls.Add(this.trackBarGen);
@@ -155,8 +166,6 @@ namespace GameOfLife {
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResizeEnd += new System.EventHandler(this.Form1_ResizeEnd);
             this.Invalidated += new System.Windows.Forms.InvalidateEventHandler(this.Form1_Invalidate);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
-            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseClick);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
             ((System.ComponentModel.ISupportInitialize)(this.trackBarGen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWidth)).EndInit();
@@ -178,6 +187,7 @@ namespace GameOfLife {
         private System.Windows.Forms.TrackBar trackBarGen;
         private System.Windows.Forms.NumericUpDown numericUpDownWidth;
         private System.Windows.Forms.NumericUpDown numericUpDownHeight;
+        private System.Windows.Forms.TabControl tabControl1;
     }
 }
 

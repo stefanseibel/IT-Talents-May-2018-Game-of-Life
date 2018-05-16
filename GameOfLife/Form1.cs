@@ -18,8 +18,7 @@ namespace GameOfLife {
         Graphics g;
 
         public GridDrawing gd;
-
-        UIControl uiControl;
+        
 
         public int gridX, gridY, gridWidth, gridHeight;
 
@@ -28,70 +27,73 @@ namespace GameOfLife {
         public Form1() {
             InitializeComponent();
 
+            this.tabControl1.TabPages.Add(new GridTab(this,new Grid(6,6), 30));
+            GridTab t = (GridTab)this.tabControl1.TabPages[0];
+            t.Paint += new PaintEventHandler(Tab_Paint);
+            t.MouseDown += new MouseEventHandler(Tab_MouseClick);
             
-            grid = new Grid(6,6);
-            currentField = grid.field;
-
-            uiControl = new UIControl(this, grid, currentField);
-
-            this.gridX = 50;
-            gridY = 50;
-            gridWidth = 0;
-            gridHeight = 0;
+            t.grid.PrintField();
         }
 
         private void Form1_Load(object sender, EventArgs e) {
 
-            this.Paint += new PaintEventHandler(Form1_Paint);
-
+            
             this.Invalidate();
         }
 
+        private void Tab_Paint(object sender, PaintEventArgs e) {
 
+            GridTab selectedTab = (GridTab) sender;
 
-        private void Form1_Paint(object sender, PaintEventArgs e) {
-            
             g = e.Graphics;
 
-            gd = new GridDrawing(currentField, g, 50, 50, this.Width - 100, this.Height - 250);
+            //TODO: make gd saved in GridTab
+            gd = new GridDrawing(selectedTab.field, g, selectedTab.border, selectedTab.border, selectedTab.Width - selectedTab.border * 3, selectedTab.Height - selectedTab.border * 3);
 
             gd.DrawGrid();
 
-            
+
 
         }
 
+
         private void buttonClear_Click(object sender, EventArgs e) {
-            uiControl.ClearGrid();
+            GridTab selectedTab = (GridTab)tabControl1.SelectedTab;
+            selectedTab.ClearGrid();
+            selectedTab.Invalidate();
         }
 
 
 
         private void Form1_MouseUp(object sender, MouseEventArgs e) {
-
+            
         }
 
 
-        private void Form1_MouseClick(object sender, MouseEventArgs e) {
+        private void Tab_MouseClick(object sender, MouseEventArgs e) {
 
-            uiControl.SetCell(e.X, e.Y);
+            GridTab selectedTab = (GridTab) sender;
+
+            selectedTab.SetCell(e.X, e.Y);
 
             Console.WriteLine(this.Height.ToString() + " " + e.Y.ToString());
         }
 
         private void trackBarGen_Scroll(object sender, EventArgs e) {
-            
-            if(this.trackBarGen.Value == this.trackBarGen.Maximum) {
 
-                currentField = grid.field;
+            GridTab selectedTab = (GridTab)tabControl1.SelectedTab;
+
+            if (this.trackBarGen.Value == this.trackBarGen.Maximum) {
+
+                selectedTab.field = selectedTab.grid.field;
 
             } else {
 
-                currentField = grid.oldGens[this.trackBarGen.Value];
+                selectedTab.field = selectedTab.grid.oldGens[this.trackBarGen.Value];
 
             }
 
-            this.Invalidate();
+            selectedTab.Invalidate();
         }
 
         private void Form1_ResizeEnd(object sender, EventArgs e) {
@@ -112,25 +114,26 @@ namespace GameOfLife {
             this.Invalidate();
         }
 
+        //TODO: change trackBarGen.Maximum somewhere else instead of reloading the whole form
         private void Form1_Invalidate(object sender, InvalidateEventArgs e) {
+            GridTab selectedTab = (GridTab)tabControl1.SelectedTab;
+            labelGeneration.Text = selectedTab.grid.generation.ToString() + ". Generation";
 
-            labelGeneration.Text = grid.generation.ToString() + ". Generation";
-
-            this.trackBarGen.Maximum = this.grid.oldGens.Count;
+            this.trackBarGen.Maximum = selectedTab.grid.oldGens.Count;
         }
 
         private void buttonNextGen_Click(object sender, EventArgs e) {
-            uiControl.NextGeneration();
-
-            this.currentField = this.grid.field;
-            this.trackBarGen.Invalidate();
+            GridTab selectedTab = (GridTab)tabControl1.SelectedTab;
+            selectedTab.NextGeneration();
+            
+            this.Invalidate();
             this.trackBarGen.Value = this.trackBarGen.Maximum;
         }
         
 
         private void buttonNewGrid_Click(object sender, EventArgs e) {
-
-            uiControl.NewGrid((int) numericUpDownWidth.Value, (int) numericUpDownHeight.Value);
+            GridTab selectedTab = (GridTab)tabControl1.SelectedTab;
+            selectedTab.NewGrid((int) numericUpDownWidth.Value, (int) numericUpDownHeight.Value);
         }
     }
 }

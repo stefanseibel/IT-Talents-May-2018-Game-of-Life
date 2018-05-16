@@ -11,8 +11,7 @@ namespace GameOfLife {
 
         //shows the count of generations that have been simulated
         public int generation;
-
-        //TODO: should save focused, not lastest gens (would make code far less confusing)
+        
         //saves the field of the latest generation as a two-dimensional boolean-array
         //dead cells are saved as false and living cells as true
         public bool[,] field;
@@ -22,7 +21,6 @@ namespace GameOfLife {
         public int height;
 
         /*
-         * TODO: should save all gens
          * saves all old generations that have been created before the latest generation
          * mainly used to scroll in Form.trackBarGen
          */
