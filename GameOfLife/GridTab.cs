@@ -12,6 +12,7 @@ namespace GameOfLife {
 
         public Grid grid;
         public Form1 form;
+        public GridDrawing gd;
 
         //TODO: Make this only a index of grid.allGens
         public bool[,] field;
@@ -49,7 +50,7 @@ namespace GameOfLife {
             }
 
             grid.generation = 1;
-            grid.oldGens.Clear();
+            grid.allGens.RemoveRange(0, grid.allGens.Count - 1);
             field = grid.field;
             form.Invalidate();
 
@@ -58,8 +59,8 @@ namespace GameOfLife {
 
         public void SetCell(int x, int y) {
 
-            int totalWidth = grid.width * form.gd.widthPerCell + (grid.width) * (int)form.gd.blackPen.Width;
-            int totalHeight = grid.height * form.gd.widthPerCell + (grid.height) * (int)form.gd.blackPen.Width;
+            int totalWidth = grid.width * gd.widthPerCell + (grid.width) * (int)gd.blackPen.Width;
+            int totalHeight = grid.height * gd.widthPerCell + (grid.height) * (int)gd.blackPen.Width;
 
             if (border < x && x < (border + totalWidth) && border < y && y < (border + totalHeight)) {
 
@@ -74,7 +75,7 @@ namespace GameOfLife {
 
                     field[posY, posX] = !grid.field[posY, posX];
 
-                    grid.oldGens.Clear();
+                    grid.allGens.RemoveRange(0, grid.allGens.Count - 1);
                     grid.generation = 1;
 
                     this.Invalidate();
@@ -89,7 +90,7 @@ namespace GameOfLife {
             
             this.grid = new Grid(width, height);
             this.field = grid.field;
-            form.gd.grid = grid.field;
+            gd.grid = grid.field;
 
             form.labelGeneration.Text = grid.generation.ToString() + ". Generation";
 

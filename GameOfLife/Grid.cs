@@ -12,6 +12,7 @@ namespace GameOfLife {
         //shows the count of generations that have been simulated
         public int generation;
         
+        //TODO: UPDATE COMMENTS TO FIELD AND ALLGENS
         //saves the field of the latest generation as a two-dimensional boolean-array
         //dead cells are saved as false and living cells as true
         public bool[,] field;
@@ -24,7 +25,7 @@ namespace GameOfLife {
          * saves all old generations that have been created before the latest generation
          * mainly used to scroll in Form.trackBarGen
          */
-        public List<bool[,]> oldGens = new List<bool[,]>();
+        public List<bool[,]> allGens = new List<bool[,]>();
 
 
         //CONSTRUCTOR: initializes a new Grid with given width and height 
@@ -39,6 +40,7 @@ namespace GameOfLife {
 
             //creates a new field with the given width and height and initializes it with dead cells
             field = new bool[height, width];
+            allGens.Add(field);
             InitializeField();
         }
 
@@ -94,11 +96,11 @@ namespace GameOfLife {
                 }
             }
 
-            //adds the previous field to oldGens 
-            oldGens.Add(field);
-
-            //sets the focused field to the newly crated one
+            //sets field to the new latest field
             field = nextGen;
+
+            //adds the new field to allGens 
+            allGens.Add(nextGen);
 
             //increments the count of generations
             generation++;

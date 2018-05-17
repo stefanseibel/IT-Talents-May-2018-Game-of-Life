@@ -12,18 +12,8 @@ using System.Windows.Controls;
 
 namespace GameOfLife {
     public partial class Form1 : Form {
-
-        public Grid grid;
-
-        Graphics g;
-
-        public GridDrawing gd;
-
+        
         public GridTab selectedTab;
-
-        public int gridX, gridY, gridWidth, gridHeight;
-
-        public bool[,] currentField;
 
         public Form1() {
             InitializeComponent();
@@ -43,12 +33,12 @@ namespace GameOfLife {
 
             GridTab paintedTab = (GridTab)sender;
 
-            g = e.Graphics;
+            Graphics g = e.Graphics;
 
-            //TODO: make gd saved in GridTab
-            gd = new GridDrawing(paintedTab.field, g, paintedTab.border, paintedTab.border, paintedTab.Width - paintedTab.border * 3, paintedTab.Height - paintedTab.border * 3);
+            //TODO: make gd not a new object every time
+            selectedTab.gd = new GridDrawing(paintedTab.field, g, paintedTab.border, paintedTab.border, paintedTab.Width - paintedTab.border * 3, paintedTab.Height - paintedTab.border * 3);
 
-            gd.DrawGrid();
+            selectedTab.gd.DrawGrid();
 
 
 
@@ -77,17 +67,8 @@ namespace GameOfLife {
 
         private void trackBarGen_Scroll(object sender, EventArgs e) {
             
-
-            if (this.trackBarGen.Value == this.trackBarGen.Maximum) {
-
-                selectedTab.field = selectedTab.grid.field;
-
-            } else {
-
-                selectedTab.field = selectedTab.grid.oldGens[this.trackBarGen.Value];
-
-            }
-
+            selectedTab.field = selectedTab.grid.allGens[this.trackBarGen.Value - 1];
+            
             selectedTab.Invalidate();
         }
 
@@ -115,7 +96,7 @@ namespace GameOfLife {
 
             labelGeneration.Text = selectedTab.grid.generation.ToString() + ". Generation";
 
-            this.trackBarGen.Maximum = selectedTab.grid.oldGens.Count;
+            this.trackBarGen.Maximum = selectedTab.grid.allGens.Count;
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e) {

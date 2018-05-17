@@ -109,9 +109,11 @@ namespace GameOfLife {
             // 
             this.trackBarGen.BackColor = System.Drawing.Color.White;
             this.trackBarGen.Location = new System.Drawing.Point(12, 446);
+            this.trackBarGen.Minimum = 1;
             this.trackBarGen.Name = "trackBarGen";
             this.trackBarGen.Size = new System.Drawing.Size(684, 45);
             this.trackBarGen.TabIndex = 8;
+            this.trackBarGen.Value = 1;
             this.trackBarGen.Scroll += new System.EventHandler(this.trackBarGen_Scroll);
             // 
             // numericUpDownWidth
