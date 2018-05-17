@@ -25,9 +25,7 @@ namespace GameOfLife {
         /// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
         /// </summary>
         private void InitializeComponent() {
-            this.components = new System.ComponentModel.Container();
             this.buttonClear = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.buttonNextGen = new System.Windows.Forms.Button();
             this.labelGeneration = new System.Windows.Forms.Label();
             this.checkBoxLockField = new System.Windows.Forms.CheckBox();
@@ -57,11 +55,6 @@ namespace GameOfLife {
             this.buttonClear.Text = "Clear";
             this.buttonClear.UseVisualStyleBackColor = false;
             this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
-            // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 10;
             // 
             // buttonNextGen
             // 
@@ -143,6 +136,7 @@ namespace GameOfLife {
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1125, 418);
             this.tabControl1.TabIndex = 11;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // Form1
             // 
@@ -179,7 +173,6 @@ namespace GameOfLife {
         #endregion
 
         private System.Windows.Forms.Button buttonClear;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button buttonNextGen;
         public System.Windows.Forms.Label labelGeneration;
         public System.Windows.Forms.CheckBox checkBoxLockField;

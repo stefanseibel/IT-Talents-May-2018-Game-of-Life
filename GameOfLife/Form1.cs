@@ -18,7 +18,8 @@ namespace GameOfLife {
         Graphics g;
 
         public GridDrawing gd;
-        
+
+        public GridTab selectedTab;
 
         public int gridX, gridY, gridWidth, gridHeight;
 
@@ -27,12 +28,9 @@ namespace GameOfLife {
         public Form1() {
             InitializeComponent();
 
-            this.tabControl1.TabPages.Add(new GridTab(this,new Grid(6,6), 30));
-            GridTab t = (GridTab)this.tabControl1.TabPages[0];
-            t.Paint += new PaintEventHandler(Tab_Paint);
-            t.MouseDown += new MouseEventHandler(Tab_MouseClick);
-            
-            t.grid.PrintField();
+            NewTab(6, 6);
+            NewTab(9, 9);
+            selectedTab = (GridTab)tabControl1.SelectedTab;
         }
 
         private void Form1_Load(object sender, EventArgs e) {
@@ -43,12 +41,12 @@ namespace GameOfLife {
 
         private void Tab_Paint(object sender, PaintEventArgs e) {
 
-            GridTab selectedTab = (GridTab) sender;
+            GridTab paintedTab = (GridTab)sender;
 
             g = e.Graphics;
 
             //TODO: make gd saved in GridTab
-            gd = new GridDrawing(selectedTab.field, g, selectedTab.border, selectedTab.border, selectedTab.Width - selectedTab.border * 3, selectedTab.Height - selectedTab.border * 3);
+            gd = new GridDrawing(paintedTab.field, g, paintedTab.border, paintedTab.border, paintedTab.Width - paintedTab.border * 3, paintedTab.Height - paintedTab.border * 3);
 
             gd.DrawGrid();
 
@@ -58,7 +56,6 @@ namespace GameOfLife {
 
 
         private void buttonClear_Click(object sender, EventArgs e) {
-            GridTab selectedTab = (GridTab)tabControl1.SelectedTab;
             selectedTab.ClearGrid();
             selectedTab.Invalidate();
         }
@@ -71,17 +68,15 @@ namespace GameOfLife {
 
 
         private void Tab_MouseClick(object sender, MouseEventArgs e) {
-
-            GridTab selectedTab = (GridTab) sender;
+            
 
             selectedTab.SetCell(e.X, e.Y);
 
-            Console.WriteLine(this.Height.ToString() + " " + e.Y.ToString());
+            Console.WriteLine(this.selectedTab.grid.width.ToString() + " " + e.Y.ToString());
         }
 
         private void trackBarGen_Scroll(object sender, EventArgs e) {
-
-            GridTab selectedTab = (GridTab)tabControl1.SelectedTab;
+            
 
             if (this.trackBarGen.Value == this.trackBarGen.Maximum) {
 
@@ -110,20 +105,28 @@ namespace GameOfLife {
             this.numericUpDownHeight.SetBounds(gap * 5 + buttonWidth * 4, this.Height - gap - buttonHeight - 40, buttonWidth, buttonHeight);
             this.checkBoxLockField.SetBounds(gap * 6 + buttonWidth * 5, this.Height - gap - buttonHeight - 40, buttonWidth, buttonHeight);
             this.labelGeneration.SetBounds(gap * 6 + buttonWidth * 5, this.Height - gap - buttonHeight - 38 + checkBoxLockField.Height, buttonWidth, buttonHeight);
+            this.tabControl1.SetBounds(gap, gap, this.Width - gap * 3, this.trackBarGen.Location.Y - gap * 2);
 
             this.Invalidate();
         }
 
         //TODO: change trackBarGen.Maximum somewhere else instead of reloading the whole form
         private void Form1_Invalidate(object sender, InvalidateEventArgs e) {
-            GridTab selectedTab = (GridTab)tabControl1.SelectedTab;
+
             labelGeneration.Text = selectedTab.grid.generation.ToString() + ". Generation";
 
             this.trackBarGen.Maximum = selectedTab.grid.oldGens.Count;
         }
 
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e) {
+            
+            selectedTab = (GridTab) this.tabControl1.SelectedTab;
+            this.trackBarGen.Maximum = selectedTab.grid.generation;
+            this.trackBarGen.Value = selectedTab.grid.generation;
+            this.Invalidate();
+        }
+
         private void buttonNextGen_Click(object sender, EventArgs e) {
-            GridTab selectedTab = (GridTab)tabControl1.SelectedTab;
             selectedTab.NextGeneration();
             
             this.Invalidate();
@@ -132,8 +135,20 @@ namespace GameOfLife {
         
 
         private void buttonNewGrid_Click(object sender, EventArgs e) {
-            GridTab selectedTab = (GridTab)tabControl1.SelectedTab;
             selectedTab.NewGrid((int) numericUpDownWidth.Value, (int) numericUpDownHeight.Value);
+        }
+
+        //FUNCTION THAT AREN'T EVENTS
+
+        private void NewTab(int width, int height) {
+
+            GridTab t = new GridTab(this, new Grid(width,height), 20);
+            this.tabControl1.TabPages.Add(t);
+            
+            t.Paint += new PaintEventHandler(Tab_Paint);
+            t.MouseDown += new MouseEventHandler(Tab_MouseClick);
+
+            
         }
     }
 }

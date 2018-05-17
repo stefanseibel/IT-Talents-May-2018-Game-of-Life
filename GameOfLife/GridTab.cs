@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GameOfLife {
-    class GridTab : TabPage{
+    public class GridTab : TabPage{
 
 
         public Grid grid;
         public Form1 form;
 
+        //TODO: Make this only a index of grid.allGens
         public bool[,] field;
 
         public int border;
