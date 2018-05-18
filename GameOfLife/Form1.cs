@@ -72,6 +72,12 @@ namespace GameOfLife {
             selectedTab.Invalidate();
         }
 
+        /* TODO:
+         * clean up and stucture code
+         * make hardcoded standard values the same as responsive design
+         * calcule minimum bounds
+         * make this trigger on 'maximize' button on top right
+         */
         private void Form1_ResizeEnd(object sender, EventArgs e) {
 
             int gap = 17; //px
@@ -86,8 +92,8 @@ namespace GameOfLife {
             this.numericUpDownHeight.SetBounds(gap * 5 + buttonWidth * 4, this.Height - gap - buttonHeight - 40, buttonWidth, buttonHeight);
             this.checkBoxLockField.SetBounds(gap * 6 + buttonWidth * 5, this.Height - gap - buttonHeight - 40, buttonWidth, buttonHeight);
             this.labelGeneration.SetBounds(gap * 6 + buttonWidth * 5, this.Height - gap - buttonHeight - 38 + checkBoxLockField.Height, buttonWidth, buttonHeight);
-            this.tabControl1.SetBounds(gap, gap, this.Width - gap * 3, this.trackBarGen.Location.Y - gap * 2);
-
+            this.tabControl1.SetBounds(gap, gap + menuStrip1.Height, this.Width - gap * 3, this.trackBarGen.Location.Y - gap * 2 - menuStrip1.Height);
+            this.buttonDelete.SetBounds(this.Width - buttonWidth - gap * 2, this.Height - buttonHeight - gap - 40, buttonWidth, buttonHeight);
             this.Invalidate();
         }
 
