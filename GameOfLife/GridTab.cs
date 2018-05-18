@@ -19,7 +19,7 @@ namespace GameOfLife {
 
         public int border;
 
-        public GridTab(Form1 form, Grid grid, int border) {
+        public GridTab(Form1 form, Grid grid, int border, string tabName) : base(tabName) {
 
             this.grid = grid;
             this.form = form;

@@ -18,8 +18,8 @@ namespace GameOfLife {
         public Form1() {
             InitializeComponent();
 
-            NewTab(6, 6);
-            NewTab(9, 9);
+            NewTab(6, 6,"6x6 Grid");
+            NewTab(9, 9, "9x9 Grid");
             selectedTab = (GridTab)tabControl1.SelectedTab;
         }
 
@@ -80,7 +80,7 @@ namespace GameOfLife {
             
             this.buttonClear.SetBounds(gap, this.Height - gap - buttonHeight - 40, buttonWidth, buttonHeight);
             this.buttonNextGen.SetBounds(gap * 2 + buttonWidth, this.Height - gap - buttonHeight - 40, buttonWidth, buttonHeight);
-            this.buttonNewGrid.SetBounds(gap * 3 + buttonWidth * 2, this.Height - gap - buttonHeight - 40, buttonWidth, buttonHeight);
+            this.buttonChangeSize.SetBounds(gap * 3 + buttonWidth * 2, this.Height - gap - buttonHeight - 40, buttonWidth, buttonHeight);
             this.trackBarGen.SetBounds(gap, this.Height - gap * 2 - buttonHeight - trackBarGen.Height - 40, trackBarGen.Width, trackBarGen.Height);
             this.numericUpDownWidth.SetBounds(gap * 4 + buttonWidth * 3, this.Height - gap - buttonHeight - 40, buttonWidth, buttonHeight);
             this.numericUpDownHeight.SetBounds(gap * 5 + buttonWidth * 4, this.Height - gap - buttonHeight - 40, buttonWidth, buttonHeight);
@@ -114,22 +114,37 @@ namespace GameOfLife {
             this.trackBarGen.Value = this.trackBarGen.Maximum;
         }
         
-
-        private void buttonNewGrid_Click(object sender, EventArgs e) {
+        private void buttonChangeSize_Click(object sender, EventArgs e) {
             selectedTab.NewGrid((int) numericUpDownWidth.Value, (int) numericUpDownHeight.Value);
         }
 
-        //FUNCTION THAT AREN'T EVENTS
+        private void newGridToolStripMenuItem_Click(object sender, EventArgs e) {
 
-        private void NewTab(int width, int height) {
+            FormNewTab formNewTab = new FormNewTab(this);
 
-            GridTab t = new GridTab(this, new Grid(width,height), 20);
+            formNewTab.ShowDialog();
+        }
+
+        //FUNCTIONS THAT AREN'T EVENTS
+
+        public void NewTab(int width, int height, string tabName) {
+
+            GridTab t = new GridTab(this, new Grid(width,height), 20, tabName);
             this.tabControl1.TabPages.Add(t);
             
             t.Paint += new PaintEventHandler(Tab_Paint);
             t.MouseDown += new MouseEventHandler(Tab_MouseClick);
 
             
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e) {
+
+            DialogResult dialogResult = MessageBox.Show("Are you sure that you want to delete the Grid?", "Delete Grid", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+            if (dialogResult == DialogResult.OK) {
+                tabControl1.TabPages.Remove(this.selectedTab);
+            }
         }
     }
 }

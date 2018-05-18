@@ -29,14 +29,19 @@ namespace GameOfLife {
             this.buttonNextGen = new System.Windows.Forms.Button();
             this.labelGeneration = new System.Windows.Forms.Label();
             this.checkBoxLockField = new System.Windows.Forms.CheckBox();
-            this.buttonNewGrid = new System.Windows.Forms.Button();
+            this.buttonChangeSize = new System.Windows.Forms.Button();
             this.trackBarGen = new System.Windows.Forms.TrackBar();
             this.numericUpDownWidth = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownHeight = new System.Windows.Forms.NumericUpDown();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.ToolStripMenuItemFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.newGridToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarGen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHeight)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonClear
@@ -90,20 +95,20 @@ namespace GameOfLife {
             this.checkBoxLockField.Text = "lock field";
             this.checkBoxLockField.UseVisualStyleBackColor = true;
             // 
-            // buttonNewGrid
+            // buttonChangeSize
             // 
-            this.buttonNewGrid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(250)))), ((int)(((byte)(131)))));
-            this.buttonNewGrid.FlatAppearance.BorderSize = 0;
-            this.buttonNewGrid.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNewGrid.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNewGrid.ForeColor = System.Drawing.Color.Black;
-            this.buttonNewGrid.Location = new System.Drawing.Point(342, 506);
-            this.buttonNewGrid.Name = "buttonNewGrid";
-            this.buttonNewGrid.Size = new System.Drawing.Size(159, 37);
-            this.buttonNewGrid.TabIndex = 5;
-            this.buttonNewGrid.Text = "New Grid";
-            this.buttonNewGrid.UseVisualStyleBackColor = false;
-            this.buttonNewGrid.Click += new System.EventHandler(this.buttonNewGrid_Click);
+            this.buttonChangeSize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(250)))), ((int)(((byte)(131)))));
+            this.buttonChangeSize.FlatAppearance.BorderSize = 0;
+            this.buttonChangeSize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonChangeSize.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonChangeSize.ForeColor = System.Drawing.Color.Black;
+            this.buttonChangeSize.Location = new System.Drawing.Point(342, 506);
+            this.buttonChangeSize.Name = "buttonChangeSize";
+            this.buttonChangeSize.Size = new System.Drawing.Size(159, 37);
+            this.buttonChangeSize.TabIndex = 5;
+            this.buttonChangeSize.Text = "Change Size";
+            this.buttonChangeSize.UseVisualStyleBackColor = false;
+            this.buttonChangeSize.Click += new System.EventHandler(this.buttonChangeSize_Click);
             // 
             // trackBarGen
             // 
@@ -132,13 +137,55 @@ namespace GameOfLife {
             // 
             // tabControl1
             // 
-            this.tabControl1.Location = new System.Drawing.Point(18, 16);
+            this.tabControl1.Location = new System.Drawing.Point(18, 44);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1125, 418);
+            this.tabControl1.Size = new System.Drawing.Size(1125, 390);
             this.tabControl1.TabIndex = 11;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemFile});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1231, 24);
+            this.menuStrip1.TabIndex = 12;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // ToolStripMenuItemFile
+            // 
+            this.ToolStripMenuItemFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newGridToolStripMenuItem});
+            this.ToolStripMenuItemFile.Name = "ToolStripMenuItemFile";
+            this.ToolStripMenuItemFile.Size = new System.Drawing.Size(37, 20);
+            this.ToolStripMenuItemFile.Text = "File";
+            // 
+            // newGridToolStripMenuItem
+            // 
+            this.newGridToolStripMenuItem.Name = "newGridToolStripMenuItem";
+            this.newGridToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.newGridToolStripMenuItem.Text = "New Grid";
+            this.newGridToolStripMenuItem.Click += new System.EventHandler(this.newGridToolStripMenuItem_Click);
+            // 
+            // buttonDelete
+            // 
+            this.buttonDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(11)))), ((int)(((byte)(11)))));
+            this.buttonDelete.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.buttonDelete.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonDelete.FlatAppearance.BorderSize = 0;
+            this.buttonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDelete.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDelete.ForeColor = System.Drawing.Color.White;
+            this.buttonDelete.Location = new System.Drawing.Point(1060, 512);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(159, 37);
+            this.buttonDelete.TabIndex = 13;
+            this.buttonDelete.Text = "Delete";
+            this.buttonDelete.UseVisualStyleBackColor = false;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // Form1
             // 
@@ -146,17 +193,20 @@ namespace GameOfLife {
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1231, 561);
+            this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.numericUpDownHeight);
             this.Controls.Add(this.numericUpDownWidth);
             this.Controls.Add(this.trackBarGen);
-            this.Controls.Add(this.buttonNewGrid);
+            this.Controls.Add(this.buttonChangeSize);
             this.Controls.Add(this.checkBoxLockField);
             this.Controls.Add(this.labelGeneration);
             this.Controls.Add(this.buttonNextGen);
             this.Controls.Add(this.buttonClear);
+            this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -166,6 +216,8 @@ namespace GameOfLife {
             ((System.ComponentModel.ISupportInitialize)(this.trackBarGen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHeight)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -178,11 +230,15 @@ namespace GameOfLife {
         private System.Windows.Forms.Button buttonNextGen;
         public System.Windows.Forms.Label labelGeneration;
         public System.Windows.Forms.CheckBox checkBoxLockField;
-        private System.Windows.Forms.Button buttonNewGrid;
+        private System.Windows.Forms.Button buttonChangeSize;
         private System.Windows.Forms.TrackBar trackBarGen;
         private System.Windows.Forms.NumericUpDown numericUpDownWidth;
         private System.Windows.Forms.NumericUpDown numericUpDownHeight;
         private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemFile;
+        private System.Windows.Forms.ToolStripMenuItem newGridToolStripMenuItem;
+        private System.Windows.Forms.Button buttonDelete;
     }
 }
 

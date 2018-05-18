@@ -52,6 +52,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormNewTab.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNewTab.Designer.cs">
+      <DependentUpon>FormNewTab.cs</DependentUpon>
+    </Compile>
     <Compile Include="Grid.cs" />
     <Compile Include="GridDrawing.cs" />
     <Compile Include="GridTab.cs">
@@ -61,6 +67,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormNewTab.resx">
+      <DependentUpon>FormNewTab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
