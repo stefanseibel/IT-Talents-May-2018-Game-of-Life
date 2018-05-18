@@ -34,9 +34,8 @@ namespace GameOfLife {
             GridTab paintedTab = (GridTab)sender;
 
             Graphics g = e.Graphics;
-
-            //TODO: make gd not a new object every time
-            selectedTab.gd = new GridDrawing(paintedTab.field, g, paintedTab.border, paintedTab.border, paintedTab.Width - paintedTab.border * 3, paintedTab.Height - paintedTab.border * 3);
+            
+            selectedTab.gd.changeSettings(paintedTab.field, g, paintedTab.border, paintedTab.border, paintedTab.Width - paintedTab.border * 3, paintedTab.Height - paintedTab.border * 3);
 
             selectedTab.gd.DrawGrid();
 

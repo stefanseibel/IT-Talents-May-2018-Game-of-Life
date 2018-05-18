@@ -20,8 +20,8 @@ namespace GameOfLife {
 
         public Pen blackPen = new Pen(Color.Black);
         
-
-        public GridDrawing(bool[,] grid, Graphics g, int x, int y, int width, int height) {
+        //TODO: changing all vars at once is not required, split up into multiple functions
+        public void changeSettings(bool[,] grid, Graphics g, int x, int y, int width, int height) {
             this.grid = grid;
             this.g = g;
             this.x = x;

@@ -26,6 +26,7 @@ namespace GameOfLife {
             this.field = grid.field;
             this.border = border;
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);
+            this.gd = new GridDrawing();
         }
 
         public void NextGeneration() {
