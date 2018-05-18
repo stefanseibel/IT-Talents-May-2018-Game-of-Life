@@ -19,7 +19,7 @@ namespace GameOfLife {
             InitializeComponent();
 
             NewTab(6, 6,"6x6 Grid");
-            NewTab(9, 9, "9x9 Grid");
+            NewTab(9, 9,"9x9 Grid");
             selectedTab = (GridTab)tabControl1.SelectedTab;
         }
 
@@ -34,8 +34,8 @@ namespace GameOfLife {
             GridTab paintedTab = (GridTab)sender;
 
             Graphics g = e.Graphics;
-            
-            selectedTab.gd.changeSettings(paintedTab.field, g, paintedTab.border, paintedTab.border, paintedTab.Width - paintedTab.border * 3, paintedTab.Height - paintedTab.border * 3);
+            //                            TODO: only hand over index
+            selectedTab.gd.changeSettings(paintedTab.grid.allGens[paintedTab.fieldIndex], g, paintedTab.border, paintedTab.border, paintedTab.Width - paintedTab.border * 3, paintedTab.Height - paintedTab.border * 3);
 
             selectedTab.gd.DrawGrid();
 
@@ -66,7 +66,7 @@ namespace GameOfLife {
 
         private void trackBarGen_Scroll(object sender, EventArgs e) {
             
-            selectedTab.field = selectedTab.grid.allGens[this.trackBarGen.Value - 1];
+            selectedTab.fieldIndex = this.trackBarGen.Value - 1;
             
             selectedTab.Invalidate();
         }
@@ -105,11 +105,13 @@ namespace GameOfLife {
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e) {
-            
-            selectedTab = (GridTab) this.tabControl1.SelectedTab;
-            this.trackBarGen.Maximum = selectedTab.grid.generation;
-            this.trackBarGen.Value = selectedTab.grid.generation;
-            this.Invalidate();
+
+            if (tabControl1.SelectedIndex >= 0) {
+                selectedTab = (GridTab)this.tabControl1.SelectedTab;
+                this.trackBarGen.Maximum = selectedTab.grid.generation;
+                this.trackBarGen.Value = selectedTab.fieldIndex + 1;
+                this.Invalidate();
+            }
         }
 
         private void buttonNextGen_Click(object sender, EventArgs e) {
@@ -130,6 +132,15 @@ namespace GameOfLife {
             formNewTab.ShowDialog();
         }
 
+        private void buttonDelete_Click(object sender, EventArgs e) {
+
+            DialogResult dialogResult = MessageBox.Show("Are you sure that you want to delete the Grid?", "Delete Grid", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+            if (dialogResult == DialogResult.OK) {
+                tabControl1.TabPages.Remove(this.selectedTab);
+            }
+        }
+
         //FUNCTIONS THAT AREN'T EVENTS
 
         public void NewTab(int width, int height, string tabName) {
@@ -140,16 +151,8 @@ namespace GameOfLife {
             t.Paint += new PaintEventHandler(Tab_Paint);
             t.MouseDown += new MouseEventHandler(Tab_MouseClick);
 
-            
+            this.selectedTab = t;
         }
 
-        private void buttonDelete_Click(object sender, EventArgs e) {
-
-            DialogResult dialogResult = MessageBox.Show("Are you sure that you want to delete the Grid?", "Delete Grid", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-
-            if (dialogResult == DialogResult.OK) {
-                tabControl1.TabPages.Remove(this.selectedTab);
-            }
-        }
     }
 }
