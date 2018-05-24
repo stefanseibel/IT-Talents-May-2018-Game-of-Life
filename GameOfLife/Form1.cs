@@ -31,15 +31,13 @@ namespace GameOfLife {
 
         private void Tab_Paint(object sender, PaintEventArgs e) {
 
-            GridTab paintedTab = (GridTab)sender;
-
             Graphics g = e.Graphics;
             //                            TODO: only hand over index
-            selectedTab.gd.changeSettings(paintedTab.grid.allGens[paintedTab.fieldIndex], g, paintedTab.border, paintedTab.border, paintedTab.Width - paintedTab.border * 3, paintedTab.Height - paintedTab.border * 3);
+            selectedTab.gd.changeSettings(selectedTab.grid.allGens[selectedTab.fieldIndex], g, selectedTab.border, selectedTab.border, selectedTab.Width - selectedTab.border * 3, selectedTab.Height - selectedTab.border * 3);
 
             selectedTab.gd.DrawGrid();
 
-
+            this.Invalidate();
 
         }
 

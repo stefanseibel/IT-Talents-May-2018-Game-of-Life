@@ -78,6 +78,7 @@ namespace GameOfLife {
 
                     grid.allGens.RemoveRange(0, grid.allGens.Count - 1);
                     grid.generation = 1;
+                    this.fieldIndex = 0;
 
                     this.Invalidate();
 
