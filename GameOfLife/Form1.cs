@@ -25,14 +25,14 @@ namespace GameOfLife {
 
         private void Form1_Load(object sender, EventArgs e) {
 
-            
+            selectedTab.gd.ChangeSize(selectedTab.border, selectedTab.border, selectedTab.Width - selectedTab.border * 2, selectedTab.Height - selectedTab.border * 2);
+
             this.Invalidate();
         }
 
         private void Tab_Paint(object sender, PaintEventArgs e) {
-
             Graphics g = e.Graphics;
-            //                            TODO: only hand over index
+            
             selectedTab.gd.changeDrawing(selectedTab.grid.allGens[selectedTab.fieldIndex], g);
 
             selectedTab.gd.DrawGrid();
@@ -108,6 +108,9 @@ namespace GameOfLife {
 
             if (tabControl1.SelectedIndex >= 0) {
                 selectedTab = (GridTab)this.tabControl1.SelectedTab;
+                //TODO: remove duplicate code
+                selectedTab.gd.ChangeSize(selectedTab.border, selectedTab.border, selectedTab.Width - selectedTab.border * 3, selectedTab.Height - selectedTab.border * 3);
+
                 this.trackBarGen.Maximum = selectedTab.grid.generation;
                 this.trackBarGen.Value = selectedTab.fieldIndex + 1;
                 this.Invalidate();
@@ -150,7 +153,7 @@ namespace GameOfLife {
             
             t.Paint += new PaintEventHandler(Tab_Paint);
             t.MouseDown += new MouseEventHandler(Tab_MouseClick);
-
+            Console.WriteLine(t.Width);
             this.selectedTab = t;
         }
 
