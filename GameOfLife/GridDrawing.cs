@@ -20,18 +20,29 @@ namespace GameOfLife {
 
         public Pen blackPen = new Pen(Color.Black);
         
+        public GridDrawing(int x, int y, int width, int height) {
+            ChangeSize(x, y, width, height);
+        }
+
         //TODO: changing all vars at once is not required, split up into multiple functions
-        public void changeSettings(bool[,] grid, Graphics g, int x, int y, int width, int height) {
+        public void changeDrawing(bool[,] grid, Graphics g) { 
             this.grid = grid;
             this.g = g;
+
+
+            widthPerCell = RecommendedWidth();
+
+            blackPen.Width = (int)widthPerCell / 50 * 2;
+
+        }
+
+        public void ChangeSize(int x, int y, int width, int height) {
+            
             this.x = x;
             this.y = y;
             this.width = width;
             this.height = height;
 
-            widthPerCell = RecommendedWidth();
-
-            blackPen.Width = (int)widthPerCell / 50 * 2;
         }
 
         public void DrawGrid() {

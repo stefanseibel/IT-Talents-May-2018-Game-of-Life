@@ -14,7 +14,6 @@ namespace GameOfLife {
         public Form1 form;
         public GridDrawing gd;
 
-        //TODO: Make this only a index of grid.allGens
         public int fieldIndex;
 
         public int border;
@@ -26,7 +25,7 @@ namespace GameOfLife {
             this.fieldIndex = 0;
             this.border = border;
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);
-            this.gd = new GridDrawing();
+            this.gd = new GridDrawing(this.border, this.border, this.Width - this.border * 3, this.Height - this.border * 3);
         }
 
         public void NextGeneration() {

@@ -9,10 +9,10 @@ namespace GameOfLife {
         
         //ATTRIBUTES:
 
-        //shows the count of generations that have been simulated
+        //counts the generations that have been simulated
         public int generation;
         
-        //TODO: UPDATE COMMENTS TO FIELD AND ALLGENS
+
         //saves the field of the latest generation as a two-dimensional boolean-array
         //dead cells are saved as false and living cells as true
         public bool[,] field;
@@ -22,7 +22,7 @@ namespace GameOfLife {
         public int height;
 
         /*
-         * saves all old generations that have been created before the latest generation
+         * saves all generations that have been created
          * mainly used to scroll in Form.trackBarGen
          */
         public List<bool[,]> allGens = new List<bool[,]>();

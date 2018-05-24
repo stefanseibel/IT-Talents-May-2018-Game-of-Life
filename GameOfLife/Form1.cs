@@ -33,7 +33,7 @@ namespace GameOfLife {
 
             Graphics g = e.Graphics;
             //                            TODO: only hand over index
-            selectedTab.gd.changeSettings(selectedTab.grid.allGens[selectedTab.fieldIndex], g, selectedTab.border, selectedTab.border, selectedTab.Width - selectedTab.border * 3, selectedTab.Height - selectedTab.border * 3);
+            selectedTab.gd.changeDrawing(selectedTab.grid.allGens[selectedTab.fieldIndex], g);
 
             selectedTab.gd.DrawGrid();
 
@@ -72,10 +72,9 @@ namespace GameOfLife {
         /* TODO:
          * clean up and stucture code
          * make hardcoded standard values the same as responsive design
-         * calcule minimum bounds
-         * make this trigger on 'maximize' button on top right
+         * calculate minimum bounds
          */
-        private void Form1_ResizeEnd(object sender, EventArgs e) {
+        private void Form1_Resize(object sender, EventArgs e) {
 
             int gap = 17; //px
             int buttonWidth = 160;
@@ -91,6 +90,9 @@ namespace GameOfLife {
             this.labelGeneration.SetBounds(gap * 6 + buttonWidth * 5, this.Height - gap - buttonHeight - 38 + checkBoxLockField.Height, buttonWidth, buttonHeight);
             this.tabControl1.SetBounds(gap, gap + menuStrip1.Height, this.Width - gap * 3, this.trackBarGen.Location.Y - gap * 2 - menuStrip1.Height);
             this.buttonDelete.SetBounds(this.Width - buttonWidth - gap * 2, this.Height - buttonHeight - gap - 40, buttonWidth, buttonHeight);
+            
+            selectedTab.gd.ChangeSize(selectedTab.border, selectedTab.border, selectedTab.Width - selectedTab.border * 3, selectedTab.Height - selectedTab.border * 3);
+
             this.Invalidate();
         }
 
