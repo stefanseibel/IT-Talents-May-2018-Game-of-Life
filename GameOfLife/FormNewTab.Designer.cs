@@ -57,16 +57,36 @@
             // numericUpDownWidth
             // 
             this.numericUpDownWidth.Location = new System.Drawing.Point(78, 12);
+            this.numericUpDownWidth.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDownWidth.Name = "numericUpDownWidth";
             this.numericUpDownWidth.Size = new System.Drawing.Size(249, 20);
             this.numericUpDownWidth.TabIndex = 2;
+            this.numericUpDownWidth.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // numericUpDownHeight
             // 
             this.numericUpDownHeight.Location = new System.Drawing.Point(78, 58);
+            this.numericUpDownHeight.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDownHeight.Name = "numericUpDownHeight";
             this.numericUpDownHeight.Size = new System.Drawing.Size(249, 20);
             this.numericUpDownHeight.TabIndex = 3;
+            this.numericUpDownHeight.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // buttonNewGrid
             // 

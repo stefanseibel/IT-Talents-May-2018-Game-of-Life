@@ -46,6 +46,7 @@ namespace GameOfLife {
             // 
             // buttonClear
             // 
+            this.buttonClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(11)))), ((int)(((byte)(11)))));
             this.buttonClear.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.buttonClear.FlatAppearance.BorderColor = System.Drawing.Color.White;
@@ -63,6 +64,7 @@ namespace GameOfLife {
             // 
             // buttonNextGen
             // 
+            this.buttonNextGen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonNextGen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.buttonNextGen.FlatAppearance.BorderSize = 0;
             this.buttonNextGen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -78,6 +80,7 @@ namespace GameOfLife {
             // 
             // labelGeneration
             // 
+            this.labelGeneration.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelGeneration.AutoSize = true;
             this.labelGeneration.Location = new System.Drawing.Point(839, 530);
             this.labelGeneration.Name = "labelGeneration";
@@ -87,6 +90,7 @@ namespace GameOfLife {
             // 
             // checkBoxLockField
             // 
+            this.checkBoxLockField.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBoxLockField.AutoSize = true;
             this.checkBoxLockField.Location = new System.Drawing.Point(842, 506);
             this.checkBoxLockField.Name = "checkBoxLockField";
@@ -97,6 +101,7 @@ namespace GameOfLife {
             // 
             // buttonChangeSize
             // 
+            this.buttonChangeSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonChangeSize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(250)))), ((int)(((byte)(131)))));
             this.buttonChangeSize.FlatAppearance.BorderSize = 0;
             this.buttonChangeSize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -112,6 +117,7 @@ namespace GameOfLife {
             // 
             // trackBarGen
             // 
+            this.trackBarGen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.trackBarGen.BackColor = System.Drawing.Color.White;
             this.trackBarGen.Location = new System.Drawing.Point(12, 446);
             this.trackBarGen.Minimum = 1;
@@ -123,25 +129,50 @@ namespace GameOfLife {
             // 
             // numericUpDownWidth
             // 
+            this.numericUpDownWidth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.numericUpDownWidth.Location = new System.Drawing.Point(507, 517);
+            this.numericUpDownWidth.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDownWidth.Name = "numericUpDownWidth";
             this.numericUpDownWidth.Size = new System.Drawing.Size(161, 20);
             this.numericUpDownWidth.TabIndex = 9;
+            this.numericUpDownWidth.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // numericUpDownHeight
             // 
+            this.numericUpDownHeight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.numericUpDownHeight.Location = new System.Drawing.Point(674, 517);
+            this.numericUpDownHeight.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDownHeight.Name = "numericUpDownHeight";
             this.numericUpDownHeight.Size = new System.Drawing.Size(159, 20);
             this.numericUpDownHeight.TabIndex = 10;
+            this.numericUpDownHeight.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Location = new System.Drawing.Point(18, 44);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1125, 390);
+            this.tabControl1.Size = new System.Drawing.Size(1201, 387);
             this.tabControl1.TabIndex = 11;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
@@ -172,6 +203,7 @@ namespace GameOfLife {
             // 
             // buttonDelete
             // 
+            this.buttonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(11)))), ((int)(((byte)(11)))));
             this.buttonDelete.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.buttonDelete.FlatAppearance.BorderColor = System.Drawing.Color.White;
@@ -179,7 +211,7 @@ namespace GameOfLife {
             this.buttonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDelete.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDelete.ForeColor = System.Drawing.Color.White;
-            this.buttonDelete.Location = new System.Drawing.Point(1060, 512);
+            this.buttonDelete.Location = new System.Drawing.Point(1060, 506);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(159, 37);
             this.buttonDelete.TabIndex = 13;
@@ -210,9 +242,9 @@ namespace GameOfLife {
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.Resize += new System.EventHandler(this.Form1_Resize);
             this.Invalidated += new System.Windows.Forms.InvalidateEventHandler(this.Form1_Invalidate);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
+            this.Resize += new System.EventHandler(this.Form1_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.trackBarGen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHeight)).EndInit();

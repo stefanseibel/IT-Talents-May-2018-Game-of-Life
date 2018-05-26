@@ -30,6 +30,10 @@ namespace GameOfLife {
 
             blackPen.Width = (int)widthPerCell / 50 * 2;
 
+            if(blackPen.Width > x) {
+                blackPen.Width = x;
+            }
+
         }
 
         public void ChangeSize(int x, int y, int width, int height) {

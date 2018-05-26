@@ -25,6 +25,8 @@ namespace GameOfLife {
 
         private void Form1_Load(object sender, EventArgs e) {
 
+            this.MinimumSize = new Size(this.labelGeneration.Location.X + this.labelGeneration.Width + this.buttonDelete.Width + 40, this.Height - this.trackBarGen.Location.Y + 30 + 250);
+
             selectedTab.gd.ChangeSize(selectedTab.border, selectedTab.border, selectedTab.Width - selectedTab.border * 2, selectedTab.Height - selectedTab.border * 2);
 
             this.Invalidate();
@@ -70,45 +72,10 @@ namespace GameOfLife {
         }
 
         /* TODO:
-         * clean up and stucture code
-         * make hardcoded standard values the same as responsive design
-         * calculate minimum bounds
+         * reload tab size
          */
         private void Form1_Resize(object sender, EventArgs e) {
 
-            int gap = 17; //px
-            int buttonWidth = 160;
-            int buttonHeight = 40;
-
-            System.Windows.Forms.Control[] bottomLeft = {
-                this.buttonClear,
-                this.buttonNextGen,
-                this.buttonChangeSize,
-                this.numericUpDownWidth,
-                this.numericUpDownHeight,
-                this.checkBoxLockField,
-                this.labelGeneration
-
-            };
-
-            this.SetBottomLeftElements(bottomLeft, gap, buttonWidth, buttonHeight);
-            //Implement this for other sides
-
-
-            /*
-            this.buttonClear.SetBounds(gap, this.Height - gap - buttonHeight - 40, buttonWidth, buttonHeight);
-            this.buttonNextGen.SetBounds(gap * 2 + buttonWidth, this.Height - gap - buttonHeight - 40, buttonWidth, buttonHeight);
-            this.buttonChangeSize.SetBounds(gap * 3 + buttonWidth * 2, this.Height - gap - buttonHeight - 40, buttonWidth, buttonHeight);
-            this.numericUpDownWidth.SetBounds(gap * 4 + buttonWidth * 3, this.Height - gap - buttonHeight - 40, buttonWidth, buttonHeight);
-            this.numericUpDownHeight.SetBounds(gap * 5 + buttonWidth * 4, this.Height - gap - buttonHeight - 40, buttonWidth, buttonHeight);
-            this.checkBoxLockField.SetBounds(gap * 6 + buttonWidth * 5, this.Height - gap - buttonHeight - 40, buttonWidth, buttonHeight);
-            this.labelGeneration.SetBounds(gap * 6 + buttonWidth * 5, this.Height - gap - buttonHeight - 38 + checkBoxLockField.Height, buttonWidth, buttonHeight);
-            */
-            this.trackBarGen.SetBounds(gap, this.Height - gap * 2 - buttonHeight - trackBarGen.Height - 40, trackBarGen.Width, trackBarGen.Height);
-
-            this.tabControl1.SetBounds(gap, gap + menuStrip1.Height, this.Width - gap * 3, this.trackBarGen.Location.Y - gap * 2 - menuStrip1.Height);
-            this.buttonDelete.SetBounds(this.Width - buttonWidth - gap * 2, this.Height - buttonHeight - gap - 40, buttonWidth, buttonHeight);
-            
             selectedTab.gd.ChangeSize(selectedTab.border, selectedTab.border, selectedTab.Width - selectedTab.border * 3, selectedTab.Height - selectedTab.border * 3);
 
             this.Invalidate();
@@ -142,6 +109,7 @@ namespace GameOfLife {
             this.trackBarGen.Value = this.trackBarGen.Maximum;
         }
         
+        //TODO: Set this.MinimumSize depending on Cell Width
         private void buttonChangeSize_Click(object sender, EventArgs e) {
             selectedTab.NewGrid((int) numericUpDownWidth.Value, (int) numericUpDownHeight.Value);
         }
@@ -175,19 +143,6 @@ namespace GameOfLife {
             this.selectedTab = t;
         }
 
-        //Return: Width of all Elements
-        public int SetBottomLeftElements(System.Windows.Forms.Control[] elements,int gap , int buttonWidth, int buttonHeight, int index = 0) {
-
-            if(index == elements.Length) {
-                return 0;
-            } else {
-                //TODO: adjust width for types other than buttons
-                elements[index].SetBounds(gap * (index + 1) + buttonWidth * index,this.Height - 80 - gap,buttonWidth, buttonHeight);
-
-                return gap + buttonWidth + SetBottomLeftElements(elements, gap, buttonWidth, buttonHeight, ++index);
-            }
-            
-        }
 
     }
 }
