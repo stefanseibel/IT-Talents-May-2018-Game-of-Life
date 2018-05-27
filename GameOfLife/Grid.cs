@@ -61,7 +61,7 @@ namespace GameOfLife {
         }
 
         //prints the Field to the console (for testing only)
-        public void PrintField() {
+        public void PrintField(bool[,] field) {
             for (int i = 0; i < height; i++) {
 
                 for (int j = 0; j < width; j++) {

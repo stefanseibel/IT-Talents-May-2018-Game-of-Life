@@ -25,6 +25,10 @@ namespace GameOfLife {
             string tabName = this.textBoxName.Text;
 
             form.NewTab(width, height, tabName);
+
+            form.selectedTab.Invalidate();
+            form.Invalidate();
+
             this.Close();
 
         }

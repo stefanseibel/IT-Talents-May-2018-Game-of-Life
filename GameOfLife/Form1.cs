@@ -34,7 +34,6 @@ namespace GameOfLife {
 
         private void Tab_Paint(object sender, PaintEventArgs e) {
             Graphics g = e.Graphics;
-            
             selectedTab.gd.changeDrawing(selectedTab.grid.allGens[selectedTab.fieldIndex], g);
 
             selectedTab.gd.DrawGrid();
@@ -58,10 +57,8 @@ namespace GameOfLife {
 
         private void Tab_MouseClick(object sender, MouseEventArgs e) {
             
-
             selectedTab.SetCell(e.X, e.Y);
-
-            Console.WriteLine(this.selectedTab.grid.width.ToString() + " " + e.Y.ToString());
+            
         }
 
         private void trackBarGen_Scroll(object sender, EventArgs e) {
@@ -70,10 +67,7 @@ namespace GameOfLife {
             
             selectedTab.Invalidate();
         }
-
-        /* TODO:
-         * reload tab size
-         */
+        
         private void Form1_Resize(object sender, EventArgs e) {
 
             selectedTab.gd.ChangeSize(selectedTab.border, selectedTab.border, selectedTab.Width - selectedTab.border * 3, selectedTab.Height - selectedTab.border * 3);
@@ -139,8 +133,13 @@ namespace GameOfLife {
             
             t.Paint += new PaintEventHandler(Tab_Paint);
             t.MouseDown += new MouseEventHandler(Tab_MouseClick);
+
+            t.gd.ChangeSize(t.border, t.border, t.Width - t.border * 3, t.Height - t.border * 3);
+
+
             Console.WriteLine(t.Width);
             this.selectedTab = t;
+
         }
 
 
