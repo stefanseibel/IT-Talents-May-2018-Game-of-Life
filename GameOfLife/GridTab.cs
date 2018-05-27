@@ -24,7 +24,7 @@ namespace GameOfLife {
             this.form = form;
             this.fieldIndex = 0;
             this.border = border;
-            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);
+            this.SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);
             this.gd = new GridDrawing();
         }
 
@@ -97,15 +97,17 @@ namespace GameOfLife {
 
         public void NewGrid(int width, int height) {
 
-            this.CreateGraphics().Clear(Color.White);
+            Graphics g = this.CreateGraphics();
+
+            g.Clear(Color.White);
             
             this.grid = new Grid(width, height);
             this.fieldIndex = 0;
-            gd.grid = grid.field;
-
-            form.labelGeneration.Text = grid.generation.ToString() + ". Generation";
 
 
+            gd.ChangeSize(border, border, this.Width - this.border * 3, this.Height - this.border * 3);
+            gd.changeDrawing(grid.field, g);
+            
             this.Invalidate();
         }
     }

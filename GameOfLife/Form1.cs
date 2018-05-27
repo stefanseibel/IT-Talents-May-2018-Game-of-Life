@@ -106,6 +106,7 @@ namespace GameOfLife {
         //TODO: Set this.MinimumSize depending on Cell Width
         private void buttonChangeSize_Click(object sender, EventArgs e) {
             selectedTab.NewGrid((int) numericUpDownWidth.Value, (int) numericUpDownHeight.Value);
+
         }
 
         private void newGridToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -139,6 +140,7 @@ namespace GameOfLife {
 
             Console.WriteLine(t.Width);
             this.selectedTab = t;
+            this.tabControl1.SelectedTab = t;
 
         }
 
