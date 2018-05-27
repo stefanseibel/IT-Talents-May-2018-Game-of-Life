@@ -105,7 +105,7 @@ namespace GameOfLife {
             this.fieldIndex = 0;
 
 
-            gd.ChangeSize(border, border, this.Width - this.border * 3, this.Height - this.border * 3);
+            gd.ChangeSize(border, border, this.Width - this.border * 2, this.Height - this.border * 2);
             gd.changeDrawing(grid.field, g);
             
             this.Invalidate();

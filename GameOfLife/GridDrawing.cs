@@ -34,6 +34,8 @@ namespace GameOfLife {
                 blackPen.Width = x;
             }
 
+            widthPerCell = widthPerCell - (int) blackPen.Width;
+
         }
 
         public void ChangeSize(int x, int y, int width, int height) {

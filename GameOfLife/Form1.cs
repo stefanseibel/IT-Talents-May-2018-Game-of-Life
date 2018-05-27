@@ -70,7 +70,7 @@ namespace GameOfLife {
         
         private void Form1_Resize(object sender, EventArgs e) {
 
-            selectedTab.gd.ChangeSize(selectedTab.border, selectedTab.border, selectedTab.Width - selectedTab.border * 3, selectedTab.Height - selectedTab.border * 3);
+            selectedTab.gd.ChangeSize(selectedTab.border, selectedTab.border, selectedTab.Width - selectedTab.border * 2, selectedTab.Height - selectedTab.border * 2);
 
             this.Invalidate();
         }
@@ -135,7 +135,7 @@ namespace GameOfLife {
             t.Paint += new PaintEventHandler(Tab_Paint);
             t.MouseDown += new MouseEventHandler(Tab_MouseClick);
 
-            t.gd.ChangeSize(t.border, t.border, t.Width - t.border * 3, t.Height - t.border * 3);
+            t.gd.ChangeSize(t.border, t.border, t.Width - t.border * 2, t.Height - t.border * 2);
 
 
             Console.WriteLine(t.Width);
