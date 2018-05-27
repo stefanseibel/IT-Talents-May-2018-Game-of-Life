@@ -188,5 +188,62 @@ namespace GameOfLife {
             //returns a tuple with values that have been changed only in case of over-/underflow
             return new Tuple<int,int>(x,y);
         }
+
+        public Tuple<int,int> FindPattern() {
+
+            bool duplicateFound = false;
+
+            int patternStart = 0;
+            int patternEnd = 0;
+
+            //Searches for Duplicates in existing list
+            for (int i = 0; i < allGens.Count; i++) {
+                //TODO: maybe change order of getRange for better Runtime 
+
+                Predicate<bool[,]> p = (bool[,] b) => { return b.Cast<bool>().SequenceEqual(allGens[i].Cast<bool>()); };
+
+                int duplicateIndex = allGens.GetRange(0,i).FindIndex(p);
+
+                if (duplicateIndex >= 0) {
+
+                    duplicateFound = true;
+
+                    patternStart = duplicateIndex;
+                    patternEnd = i;
+
+                    //Breaks the for loop
+                    i = allGens.Count;
+
+
+                }
+
+            }
+            Console.WriteLine(duplicateFound);
+            while (!duplicateFound) {
+
+                NextGeneration();
+                Predicate<bool[,]> p = (bool[,] b) => { return b.Cast<bool>().SequenceEqual(allGens.Last().Cast<bool>()); };
+
+                int duplicateIndex = allGens.GetRange(0, allGens.Count - 1).FindIndex(p);
+                
+
+                if (duplicateIndex >= 0) {
+
+                    duplicateFound = true;
+
+                    patternStart = duplicateIndex;
+                    patternEnd = allGens.Count - 1;
+
+                }
+
+            }
+
+            Console.WriteLine(patternStart);
+            Console.WriteLine(patternEnd);
+            Console.WriteLine();
+
+            return new Tuple<int, int>(patternStart, patternEnd);
+
+        }
     }
 }

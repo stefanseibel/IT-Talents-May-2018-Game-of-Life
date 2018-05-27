@@ -87,8 +87,7 @@ namespace GameOfLife {
                     grid.field = grid.allGens[0];
                     grid.generation = 1;
                     this.fieldIndex = 0;
-
-                    grid.PrintField(grid.allGens[fieldIndex]);
+                    
                     this.Invalidate();
 
                 }
@@ -100,15 +99,23 @@ namespace GameOfLife {
             Graphics g = this.CreateGraphics();
 
             g.Clear(Color.White);
-            
+
             this.grid = new Grid(width, height);
             this.fieldIndex = 0;
 
 
             gd.ChangeSize(border, border, this.Width - this.border * 2, this.Height - this.border * 2);
             gd.changeDrawing(grid.field, g);
-            
+
             this.Invalidate();
         }
+
+        public void FindPattern() {
+
+            this.grid.FindPattern();
+
+            this.Invalidate();
+        }
+
     }
 }

@@ -125,6 +125,10 @@ namespace GameOfLife {
             }
         }
 
+        private void buttonFindPattern_Click(object sender, EventArgs e) {
+            selectedTab.FindPattern();
+        }
+
         //FUNCTIONS THAT AREN'T EVENTS
 
         public void NewTab(int width, int height, string tabName) {
@@ -136,9 +140,7 @@ namespace GameOfLife {
             t.MouseDown += new MouseEventHandler(Tab_MouseClick);
 
             t.gd.ChangeSize(t.border, t.border, t.Width - t.border * 2, t.Height - t.border * 2);
-
-
-            Console.WriteLine(t.Width);
+            
             this.selectedTab = t;
             this.tabControl1.SelectedTab = t;
 

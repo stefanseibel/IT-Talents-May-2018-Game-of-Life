@@ -25,8 +25,7 @@ namespace GameOfLife {
             this.grid = grid;
             this.g = g;
 
-
-            Console.WriteLine(this.width.ToString() + " " + this.height.ToString());
+            
             widthPerCell = RecommendedWidth();
             blackPen.Width = (int)widthPerCell / 50 * 2;
 
@@ -78,7 +77,7 @@ namespace GameOfLife {
 
             int heightPerCell = height / grid.GetLength(0);
             int widthPerCell = width / grid.GetLength(1);
-            Console.WriteLine("AAAA " + width);
+            
             if (heightPerCell < widthPerCell) {
                 this.width = heightPerCell * grid.GetLength(1);
                 return heightPerCell;
