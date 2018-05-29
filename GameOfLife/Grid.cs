@@ -218,7 +218,7 @@ namespace GameOfLife {
                 }
 
             }
-            Console.WriteLine(duplicateFound);
+            
             while (!duplicateFound) {
 
                 NextGeneration();

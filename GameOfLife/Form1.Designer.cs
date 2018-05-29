@@ -99,6 +99,7 @@ namespace GameOfLife {
             this.checkBoxLockField.TabIndex = 4;
             this.checkBoxLockField.Text = "lock field";
             this.checkBoxLockField.UseVisualStyleBackColor = true;
+            this.checkBoxLockField.CheckedChanged += new System.EventHandler(this.checkBoxLockField_CheckedChanged);
             // 
             // buttonChangeSize
             // 
@@ -281,7 +282,7 @@ namespace GameOfLife {
         public System.Windows.Forms.Label labelGeneration;
         public System.Windows.Forms.CheckBox checkBoxLockField;
         private System.Windows.Forms.Button buttonChangeSize;
-        private System.Windows.Forms.TrackBar trackBarGen;
+        public System.Windows.Forms.TrackBar trackBarGen;
         private System.Windows.Forms.NumericUpDown numericUpDownWidth;
         private System.Windows.Forms.NumericUpDown numericUpDownHeight;
         private System.Windows.Forms.TabControl tabControl1;

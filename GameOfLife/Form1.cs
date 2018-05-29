@@ -15,6 +15,8 @@ namespace GameOfLife {
         
         public GridTab selectedTab;
 
+        public bool isLocked = false;
+
         public Form1() {
             InitializeComponent();
 
@@ -56,9 +58,12 @@ namespace GameOfLife {
 
 
         private void Tab_MouseClick(object sender, MouseEventArgs e) {
-            
-            selectedTab.SetCell(e.X, e.Y);
-            
+
+            if (!isLocked) {
+
+                selectedTab.SetCell(e.X, e.Y);
+
+            }
         }
 
         private void trackBarGen_Scroll(object sender, EventArgs e) {
@@ -126,7 +131,10 @@ namespace GameOfLife {
         }
 
         private void buttonFindPattern_Click(object sender, EventArgs e) {
-            selectedTab.FindPattern();
+
+            FormFindRecurrence form = new FormFindRecurrence(selectedTab.grid, this);
+
+            form.Show();
         }
 
         //FUNCTIONS THAT AREN'T EVENTS
@@ -146,6 +154,10 @@ namespace GameOfLife {
 
         }
 
+        private void checkBoxLockField_CheckedChanged(object sender, EventArgs e) {
 
+            this.isLocked = checkBoxLockField.Checked;
+
+        }
     }
 }

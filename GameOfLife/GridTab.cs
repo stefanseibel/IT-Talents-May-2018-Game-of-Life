@@ -65,32 +65,26 @@ namespace GameOfLife {
 
             if (border < x && x < (border + totalWidth) && border < y && y < (border + totalHeight)) {
                 
-                if (!form.checkBoxLockField.Checked) {
+                //TODO: Use gridDrawing.widthPerCell
+                int totalWidthPerCell = totalWidth / grid.width;
+                int totalHeightPerCell = totalWidth / grid.height;
 
+                int posX = (x - border) / totalWidthPerCell;
+                int posY = (y - border) / totalWidthPerCell;
 
+                grid.allGens[fieldIndex][posY, posX] = !grid.allGens[fieldIndex][posY, posX];
 
-                    //TODO: Use gridDrawing.widthPerCell
-                    int totalWidthPerCell = totalWidth / grid.width;
-                    int totalHeightPerCell = totalWidth / grid.height;
-
-                    int posX = (x - border) / totalWidthPerCell;
-                    int posY = (y - border) / totalWidthPerCell;
-
-                    grid.allGens[fieldIndex][posY, posX] = !grid.allGens[fieldIndex][posY, posX];
-
+                
+                grid.allGens = new List<bool[,]> {
+                    grid.allGens[fieldIndex]
+                };
                     
-
-                    grid.allGens = new List<bool[,]> {
-                        grid.allGens[fieldIndex]
-                    };
+                grid.field = grid.allGens[0];
+                grid.generation = 1;
+                this.fieldIndex = 0;
                     
-                    grid.field = grid.allGens[0];
-                    grid.generation = 1;
-                    this.fieldIndex = 0;
-                    
-                    this.Invalidate();
-
-                }
+                this.Invalidate();
+                
             }
         }
 
