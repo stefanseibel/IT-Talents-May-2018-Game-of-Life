@@ -27,7 +27,7 @@ namespace GameOfLife {
 
         private void Form1_Load(object sender, EventArgs e) {
 
-            this.MinimumSize = new Size(this.labelGeneration.Location.X + this.labelGeneration.Width + this.buttonDelete.Width + 40, this.Height - this.trackBarGen.Location.Y + 30 + 250);
+            this.MinimumSize = new Size(this.labelGeneration.Location.X + this.labelGeneration.Width + 12 + 12, this.Height - this.trackBarGen.Location.Y + 30 + 250);
 
             selectedTab.gd.ChangeSize(selectedTab.border, selectedTab.border, selectedTab.Width - selectedTab.border * 2, selectedTab.Height - selectedTab.border * 2);
 
@@ -79,8 +79,7 @@ namespace GameOfLife {
 
             this.Invalidate();
         }
-
-        //TODO: change trackBarGen.Maximum somewhere else instead of reloading the whole form
+        
         private void Form1_Invalidate(object sender, InvalidateEventArgs e) {
 
             labelGeneration.Text = selectedTab.grid.generation.ToString() + ". Generation";
@@ -92,7 +91,7 @@ namespace GameOfLife {
 
             if (tabControl1.SelectedIndex >= 0) {
                 selectedTab = (GridTab)this.tabControl1.SelectedTab;
-                //TODO: remove duplicate code
+
                 selectedTab.gd.ChangeSize(selectedTab.border, selectedTab.border, selectedTab.Width - selectedTab.border * 3, selectedTab.Height - selectedTab.border * 3);
 
                 this.trackBarGen.Maximum = selectedTab.grid.generation;
@@ -108,7 +107,6 @@ namespace GameOfLife {
             this.trackBarGen.Value = this.trackBarGen.Maximum;
         }
         
-        //TODO: Set this.MinimumSize depending on Cell Width
         private void buttonChangeSize_Click(object sender, EventArgs e) {
             selectedTab.NewGrid((int) numericUpDownWidth.Value, (int) numericUpDownHeight.Value);
 

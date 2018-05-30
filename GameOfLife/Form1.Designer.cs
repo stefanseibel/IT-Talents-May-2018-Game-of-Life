@@ -55,7 +55,7 @@ namespace GameOfLife {
             this.buttonClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClear.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClear.ForeColor = System.Drawing.Color.White;
-            this.buttonClear.Location = new System.Drawing.Point(12, 528);
+            this.buttonClear.Location = new System.Drawing.Point(12, 434);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(159, 37);
             this.buttonClear.TabIndex = 0;
@@ -71,7 +71,7 @@ namespace GameOfLife {
             this.buttonNextGen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonNextGen.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonNextGen.ForeColor = System.Drawing.Color.White;
-            this.buttonNextGen.Location = new System.Drawing.Point(177, 528);
+            this.buttonNextGen.Location = new System.Drawing.Point(177, 434);
             this.buttonNextGen.Name = "buttonNextGen";
             this.buttonNextGen.Size = new System.Drawing.Size(159, 37);
             this.buttonNextGen.TabIndex = 1;
@@ -83,7 +83,7 @@ namespace GameOfLife {
             // 
             this.labelGeneration.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelGeneration.AutoSize = true;
-            this.labelGeneration.Location = new System.Drawing.Point(836, 552);
+            this.labelGeneration.Location = new System.Drawing.Point(839, 458);
             this.labelGeneration.Name = "labelGeneration";
             this.labelGeneration.Size = new System.Drawing.Size(71, 13);
             this.labelGeneration.TabIndex = 3;
@@ -93,7 +93,7 @@ namespace GameOfLife {
             // 
             this.checkBoxLockField.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBoxLockField.AutoSize = true;
-            this.checkBoxLockField.Location = new System.Drawing.Point(839, 528);
+            this.checkBoxLockField.Location = new System.Drawing.Point(839, 434);
             this.checkBoxLockField.Name = "checkBoxLockField";
             this.checkBoxLockField.Size = new System.Drawing.Size(68, 17);
             this.checkBoxLockField.TabIndex = 4;
@@ -109,7 +109,7 @@ namespace GameOfLife {
             this.buttonChangeSize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonChangeSize.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonChangeSize.ForeColor = System.Drawing.Color.Black;
-            this.buttonChangeSize.Location = new System.Drawing.Point(342, 528);
+            this.buttonChangeSize.Location = new System.Drawing.Point(342, 434);
             this.buttonChangeSize.Name = "buttonChangeSize";
             this.buttonChangeSize.Size = new System.Drawing.Size(159, 37);
             this.buttonChangeSize.TabIndex = 5;
@@ -121,7 +121,7 @@ namespace GameOfLife {
             // 
             this.trackBarGen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.trackBarGen.BackColor = System.Drawing.Color.White;
-            this.trackBarGen.Location = new System.Drawing.Point(18, 477);
+            this.trackBarGen.Location = new System.Drawing.Point(18, 383);
             this.trackBarGen.Minimum = 1;
             this.trackBarGen.Name = "trackBarGen";
             this.trackBarGen.Size = new System.Drawing.Size(684, 45);
@@ -132,7 +132,7 @@ namespace GameOfLife {
             // numericUpDownWidth
             // 
             this.numericUpDownWidth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.numericUpDownWidth.Location = new System.Drawing.Point(507, 539);
+            this.numericUpDownWidth.Location = new System.Drawing.Point(507, 445);
             this.numericUpDownWidth.Minimum = new decimal(new int[] {
             1,
             0,
@@ -150,7 +150,7 @@ namespace GameOfLife {
             // numericUpDownHeight
             // 
             this.numericUpDownHeight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.numericUpDownHeight.Location = new System.Drawing.Point(674, 539);
+            this.numericUpDownHeight.Location = new System.Drawing.Point(674, 445);
             this.numericUpDownHeight.Minimum = new decimal(new int[] {
             1,
             0,
@@ -174,7 +174,7 @@ namespace GameOfLife {
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1201, 427);
+            this.tabControl1.Size = new System.Drawing.Size(1201, 322);
             this.tabControl1.TabIndex = 11;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
@@ -213,7 +213,7 @@ namespace GameOfLife {
             this.buttonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDelete.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDelete.ForeColor = System.Drawing.Color.White;
-            this.buttonDelete.Location = new System.Drawing.Point(1060, 579);
+            this.buttonDelete.Location = new System.Drawing.Point(1060, 480);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(159, 37);
             this.buttonDelete.TabIndex = 13;
@@ -229,7 +229,7 @@ namespace GameOfLife {
             this.buttonFindPattern.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonFindPattern.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonFindPattern.ForeColor = System.Drawing.Color.White;
-            this.buttonFindPattern.Location = new System.Drawing.Point(342, 571);
+            this.buttonFindPattern.Location = new System.Drawing.Point(342, 480);
             this.buttonFindPattern.Name = "buttonFindPattern";
             this.buttonFindPattern.Size = new System.Drawing.Size(159, 37);
             this.buttonFindPattern.TabIndex = 14;
@@ -242,7 +242,7 @@ namespace GameOfLife {
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1231, 634);
+            this.ClientSize = new System.Drawing.Size(1231, 529);
             this.Controls.Add(this.buttonFindPattern);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.tabControl1);

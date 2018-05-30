@@ -65,12 +65,8 @@ namespace GameOfLife {
 
             if (border < x && x < (border + totalWidth) && border < y && y < (border + totalHeight)) {
                 
-                //TODO: Use gridDrawing.widthPerCell
-                int totalWidthPerCell = totalWidth / grid.width;
-                int totalHeightPerCell = totalWidth / grid.height;
-
-                int posX = (x - border) / totalWidthPerCell;
-                int posY = (y - border) / totalWidthPerCell;
+                int posX = (x - border) / gd.widthPerCell;
+                int posY = (y - border) / gd.widthPerCell;
 
                 grid.allGens[fieldIndex][posY, posX] = !grid.allGens[fieldIndex][posY, posX];
 

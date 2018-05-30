@@ -27,14 +27,6 @@ namespace GameOfLife {
             this.form = form;
         }
 
-        private void buttonFindPattern_Click(object sender, EventArgs e) {
-
-            Tuple<int, int> bounds = grid.FindPattern();
-
-            this.labelPrintResult.Text = "Recurring Pattern between Generations " + (bounds.Item1 + 1).ToString() + " and " + (bounds.Item2 + 1).ToString();
-
-        }
-
         private void FormFindRecurrence_Shown(object sender, EventArgs e) {
             
             thread = new System.Threading.Thread(FindPattern);
@@ -86,13 +78,17 @@ namespace GameOfLife {
         private void UpdateForm() {
 
 
+            //TODO: Other Text for special patterns e. g. stable end
+            this.labelPrintResult.Text = "Recurring Pattern between Generations " + (patternStart + 1).ToString() + " and " + (patternEnd + 1).ToString();
+            
+            if (this.grid.generation == (patternEnd + 1)) { 
+                this.form.selectedTab.fieldIndex = patternEnd;
 
-            this.labelPrintResult.Text = "Recurring Pattern between Generations " + patternStart.ToString() + " and " + patternEnd.ToString();
+                this.form.trackBarGen.Maximum = (patternEnd + 1);
+                this.form.trackBarGen.Value = (patternEnd + 1);
+            }
 
-
-            this.form.selectedTab.fieldIndex = patternEnd;
             this.form.selectedTab.Invalidate();
-
 
         }
 
