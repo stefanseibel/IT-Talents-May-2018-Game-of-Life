@@ -17,6 +17,8 @@ namespace GameOfLife {
         private int patternEnd;
         private bool finished = false;
 
+        System.Threading.Thread thread;
+
 
         public FormFindRecurrence(Grid grid, Form1 form) {
             InitializeComponent();
@@ -35,7 +37,7 @@ namespace GameOfLife {
 
         private void FormFindRecurrence_Shown(object sender, EventArgs e) {
             
-            System.Threading.Thread thread = new System.Threading.Thread(FindPattern);
+            thread = new System.Threading.Thread(FindPattern);
             thread.Start();
             
         }
@@ -74,8 +76,7 @@ namespace GameOfLife {
             patternStart = bounds.Item1;
             patternEnd = bounds.Item2;
 
-
-
+            
             Action action = UpdateForm;
             
             this.Invoke(action);
@@ -96,6 +97,8 @@ namespace GameOfLife {
         }
 
         private void FormFindRecurrence_Deactivate(object sender, EventArgs e) {
+            thread.Abort();
+
             form.isLocked = form.checkBoxLockField.Checked;
         }
     }

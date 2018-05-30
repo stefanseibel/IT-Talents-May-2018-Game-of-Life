@@ -132,11 +132,14 @@ namespace GameOfLife {
 
         private void buttonFindPattern_Click(object sender, EventArgs e) {
 
-            FormFindRecurrence form = new FormFindRecurrence(selectedTab.grid, this);
+            if (!FormOpened(typeof(FormFindRecurrence))) {
 
-            isLocked = true;
+                FormFindRecurrence form = new FormFindRecurrence(selectedTab.grid, this);
 
-            form.Show();
+                isLocked = true;
+
+                form.Show();
+            }
         }
 
         //FUNCTIONS THAT AREN'T EVENTS
