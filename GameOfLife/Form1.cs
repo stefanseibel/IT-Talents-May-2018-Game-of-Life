@@ -27,7 +27,7 @@ namespace GameOfLife {
 
         private void Form1_Load(object sender, EventArgs e) {
 
-            this.MinimumSize = new Size(this.labelGeneration.Location.X + this.labelGeneration.Width + 12 + 12, this.Height - this.trackBarGen.Location.Y + 30 + 250);
+            this.MinimumSize = new Size(this.checkBoxLockField.Location.X + this.checkBoxLockField.Width + 12 + 12, this.Height - this.trackBarGen.Location.Y + 30 + 250);
 
             selectedTab.gd.ChangeSize(selectedTab.border, selectedTab.border, selectedTab.Width - selectedTab.border * 2, selectedTab.Height - selectedTab.border * 2);
 

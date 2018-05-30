@@ -55,7 +55,7 @@ namespace GameOfLife {
             this.buttonClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClear.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClear.ForeColor = System.Drawing.Color.White;
-            this.buttonClear.Location = new System.Drawing.Point(12, 434);
+            this.buttonClear.Location = new System.Drawing.Point(12, 480);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(159, 37);
             this.buttonClear.TabIndex = 0;
@@ -71,7 +71,7 @@ namespace GameOfLife {
             this.buttonNextGen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonNextGen.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonNextGen.ForeColor = System.Drawing.Color.White;
-            this.buttonNextGen.Location = new System.Drawing.Point(177, 434);
+            this.buttonNextGen.Location = new System.Drawing.Point(177, 480);
             this.buttonNextGen.Name = "buttonNextGen";
             this.buttonNextGen.Size = new System.Drawing.Size(159, 37);
             this.buttonNextGen.TabIndex = 1;
@@ -83,7 +83,7 @@ namespace GameOfLife {
             // 
             this.labelGeneration.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelGeneration.AutoSize = true;
-            this.labelGeneration.Location = new System.Drawing.Point(839, 458);
+            this.labelGeneration.Location = new System.Drawing.Point(708, 383);
             this.labelGeneration.Name = "labelGeneration";
             this.labelGeneration.Size = new System.Drawing.Size(71, 13);
             this.labelGeneration.TabIndex = 3;
@@ -93,7 +93,7 @@ namespace GameOfLife {
             // 
             this.checkBoxLockField.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBoxLockField.AutoSize = true;
-            this.checkBoxLockField.Location = new System.Drawing.Point(839, 434);
+            this.checkBoxLockField.Location = new System.Drawing.Point(785, 382);
             this.checkBoxLockField.Name = "checkBoxLockField";
             this.checkBoxLockField.Size = new System.Drawing.Size(68, 17);
             this.checkBoxLockField.TabIndex = 4;
@@ -109,7 +109,7 @@ namespace GameOfLife {
             this.buttonChangeSize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonChangeSize.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonChangeSize.ForeColor = System.Drawing.Color.Black;
-            this.buttonChangeSize.Location = new System.Drawing.Point(342, 434);
+            this.buttonChangeSize.Location = new System.Drawing.Point(12, 434);
             this.buttonChangeSize.Name = "buttonChangeSize";
             this.buttonChangeSize.Size = new System.Drawing.Size(159, 37);
             this.buttonChangeSize.TabIndex = 5;
@@ -132,7 +132,7 @@ namespace GameOfLife {
             // numericUpDownWidth
             // 
             this.numericUpDownWidth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.numericUpDownWidth.Location = new System.Drawing.Point(507, 445);
+            this.numericUpDownWidth.Location = new System.Drawing.Point(177, 445);
             this.numericUpDownWidth.Minimum = new decimal(new int[] {
             1,
             0,
@@ -150,7 +150,7 @@ namespace GameOfLife {
             // numericUpDownHeight
             // 
             this.numericUpDownHeight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.numericUpDownHeight.Location = new System.Drawing.Point(674, 445);
+            this.numericUpDownHeight.Location = new System.Drawing.Point(344, 445);
             this.numericUpDownHeight.Minimum = new decimal(new int[] {
             1,
             0,
@@ -193,13 +193,13 @@ namespace GameOfLife {
             this.ToolStripMenuItemFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newGridToolStripMenuItem});
             this.ToolStripMenuItemFile.Name = "ToolStripMenuItemFile";
-            this.ToolStripMenuItemFile.Size = new System.Drawing.Size(37, 20);
-            this.ToolStripMenuItemFile.Text = "File";
+            this.ToolStripMenuItemFile.Size = new System.Drawing.Size(61, 20);
+            this.ToolStripMenuItemFile.Text = "Options";
             // 
             // newGridToolStripMenuItem
             // 
             this.newGridToolStripMenuItem.Name = "newGridToolStripMenuItem";
-            this.newGridToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.newGridToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.newGridToolStripMenuItem.Text = "New Grid";
             this.newGridToolStripMenuItem.Click += new System.EventHandler(this.newGridToolStripMenuItem_Click);
             // 
