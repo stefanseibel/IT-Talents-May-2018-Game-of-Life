@@ -99,10 +99,10 @@
             this.MinimumSize = new System.Drawing.Size(615, 185);
             this.Name = "FormFindRecurrence";
             this.Text = "FormFindRecurrence";
+            this.Deactivate += new System.EventHandler(this.FormFindRecurrence_Deactivate);
             this.Shown += new System.EventHandler(this.FormFindRecurrence_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
-            
 
         }
 

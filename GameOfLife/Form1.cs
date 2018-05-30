@@ -134,6 +134,8 @@ namespace GameOfLife {
 
             FormFindRecurrence form = new FormFindRecurrence(selectedTab.grid, this);
 
+            isLocked = true;
+
             form.Show();
         }
 
@@ -156,8 +158,22 @@ namespace GameOfLife {
 
         private void checkBoxLockField_CheckedChanged(object sender, EventArgs e) {
 
-            this.isLocked = checkBoxLockField.Checked;
+            
+            if (!FormOpened(typeof(FormFindRecurrence))) {
+                this.isLocked = checkBoxLockField.Checked;
+            }
 
+        }
+
+        private bool FormOpened(Type formType) {
+
+            foreach(Form openForm in Application.OpenForms) {
+                if(openForm.GetType() == formType) {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

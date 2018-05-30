@@ -94,5 +94,9 @@ namespace GameOfLife {
 
 
         }
+
+        private void FormFindRecurrence_Deactivate(object sender, EventArgs e) {
+            form.isLocked = form.checkBoxLockField.Checked;
+        }
     }
 }
