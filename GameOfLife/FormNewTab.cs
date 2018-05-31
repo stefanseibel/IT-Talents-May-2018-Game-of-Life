@@ -18,6 +18,7 @@ namespace GameOfLife {
 
         //CONSTRUCTOR: initializes the Form and its components
         public FormNewTab(Form1 form) {
+            //Initializes the Forms
             InitializeComponent();
 
             //sets form Attribute from Parameter
@@ -38,7 +39,7 @@ namespace GameOfLife {
             //refreshes the Drawing
             form.selectedTab.Invalidate();
 
-            //closes the Tab 
+            //closes the Form 
             this.Close();
 
         }

@@ -84,7 +84,7 @@
             this.buttonClose.TabIndex = 21;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
-            this.buttonClose.Click += new System.EventHandler(this.buttonDelete_Click);
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
             // FormFindRecurrence
             // 
