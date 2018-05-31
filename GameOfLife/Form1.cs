@@ -29,7 +29,7 @@ namespace GameOfLife {
 
             this.MinimumSize = new Size(this.checkBoxLockField.Location.X + this.checkBoxLockField.Width + 12 + 12, this.Height - this.trackBarGen.Location.Y + 30 + 250);
 
-            selectedTab.gd.ChangeSize(selectedTab.border, selectedTab.border, selectedTab.Width - selectedTab.border * 2, selectedTab.Height - selectedTab.border * 2);
+            selectedTab.gd.SetSize(selectedTab.border, selectedTab.border, selectedTab.Width - selectedTab.border * 2, selectedTab.Height - selectedTab.border * 2);
 
             this.Invalidate();
         }
@@ -75,7 +75,7 @@ namespace GameOfLife {
         
         private void Form1_Resize(object sender, EventArgs e) {
 
-            selectedTab.gd.ChangeSize(selectedTab.border, selectedTab.border, selectedTab.Width - selectedTab.border * 2, selectedTab.Height - selectedTab.border * 2);
+            selectedTab.gd.SetSize(selectedTab.border, selectedTab.border, selectedTab.Width - selectedTab.border * 2, selectedTab.Height - selectedTab.border * 2);
 
             this.Invalidate();
         }
@@ -92,7 +92,7 @@ namespace GameOfLife {
             if (tabControl1.SelectedIndex >= 0) {
                 selectedTab = (GridTab)this.tabControl1.SelectedTab;
 
-                selectedTab.gd.ChangeSize(selectedTab.border, selectedTab.border, selectedTab.Width - selectedTab.border * 3, selectedTab.Height - selectedTab.border * 3);
+                selectedTab.gd.SetSize(selectedTab.border, selectedTab.border, selectedTab.Width - selectedTab.border * 3, selectedTab.Height - selectedTab.border * 3);
 
                 this.trackBarGen.Maximum = selectedTab.grid.generation;
                 this.trackBarGen.Value = selectedTab.fieldIndex + 1;
@@ -150,7 +150,7 @@ namespace GameOfLife {
             t.Paint += new PaintEventHandler(Tab_Paint);
             t.MouseDown += new MouseEventHandler(Tab_MouseClick);
 
-            t.gd.ChangeSize(t.border, t.border, t.Width - t.border * 2, t.Height - t.border * 2);
+            t.gd.SetSize(t.border, t.border, t.Width - t.border * 2, t.Height - t.border * 2);
             
             this.selectedTab = t;
             this.tabControl1.SelectedTab = t;
