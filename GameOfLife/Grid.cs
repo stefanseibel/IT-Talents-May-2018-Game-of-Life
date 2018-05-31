@@ -7,130 +7,130 @@ using System.Threading.Tasks;
 namespace GameOfLife {
     public class Grid {
         
-        //ATTRIBUTES:
+        ///ATTRIBUTES:
 
-        //counts the generations that have been simulated
+        ///counts the generations that have been simulated
         public int generation;
         
 
-        //saves the field of the latest generation as a two-dimensional boolean-array
-        //dead cells are saved as false and living cells as true
+        ///saves the field of the latest generation as a two-dimensional boolean-array
+        ///dead cells are saved as false and living cells as true
         public bool[,] field;
 
-        //saves the height and width of the grid
+        ///saves the height and width of the grid
         public int width;
         public int height;
 
-        /*
+        /**
          * saves all generations that have been created
          * mainly used to scroll in Form.trackBarGen
          */
         public List<bool[,]> allGens = new List<bool[,]>();
 
 
-        //CONSTRUCTOR: initializes a new Grid with given width and height 
+        ///CONSTRUCTOR: initializes a new Grid with given width and height 
         public Grid(int width, int height) {
 
-            // sets the current Generation to 1 (as there weren't any generations of this Grid before creating it
+            /// sets the current Generation to 1 (as there weren't any generations of this Grid before creating it
             generation = 1;
             
-            //saves width and height as attributes from the given parameters)
+            ///saves width and height as attributes from the given parameters)
             this.width = width;
             this.height = height;
 
-            //creates a new field with the given width and height and initializes it with dead cells
+            ///creates a new field with the given width and height and initializes it with dead cells
             field = new bool[height, width];
             allGens.Add(field);
             InitializeField();
         }
 
-        //METHODS:
+        ///METHODS:
 
-        //initializes the field by setting every cell to false (dead)
+        ///initializes the field by setting every cell to false (dead)
         public void InitializeField() {
 
-            //iterates through every cell of the latest field
+            ///iterates through every cell of the latest field
             for(int i = 0; i < height; i++) {
 
                 for(int j = 0; j < width; j++) {
 
-                    //sets value of each cell to false (dead)
+                    ///sets value of each cell to false (dead)
                     field[i, j] = false;
                 }
             }
         }
 
-        // simulates a new generation based on the most recent field
+        /// simulates a new generation based on the most recent field
         public void NextGeneration() {
 
-            //creates a new field for the next generation
+            ///creates a new field for the next generation
             bool[,] nextGen = new bool[height,width];
 
-            //iterates through every cell of the latest field
+            ///iterates through every cell of the latest field
             for (int i = 0; i < height; i++) {
 
                 for(int j = 0; j < width; j++) {
 
-                    // sets the cell in the next generation to its value according to the rules 
+                    /// sets the cell in the next generation to its value according to the rules 
                     nextGen[i,j] = IsAliveInNextGen(j, i);
 
                 }
             }
 
-            //sets field to the new latest field
+            ///sets field to the new latest field
             field = nextGen;
 
-            //adds the new field to allGens 
+            ///adds the new field to allGens 
             allGens.Add(nextGen);
 
-            //increments the count of generations
+            ///increments the count of generations
             generation++;
 
         }
 
-        //checks if a cell at given coordinates will be alive in the next generation
+        ///checks if a cell at given coordinates will be alive in the next generation
         public bool IsAliveInNextGen(int x, int y) {
 
-            //number of neighbours the cell has in the previous generation
+            ///number of neighbours the cell has in the previous generation
             int neighbours = Neighbours(x,y);
 
-            //says if the cell was alive in the previous generation
+            ///says if the cell was alive in the previous generation
             bool isAlive = field[y, x];
 
-            //sets the cell alive if it had three neighbours regardless of its state in the previous generation
+            ///sets the cell alive if it had three neighbours regardless of its state in the previous generation
             if(neighbours == 3) {
                 return true;
 
-            //sets the cell alive if it had two neighbours and was alive in the previous generation
+            ///sets the cell alive if it had two neighbours and was alive in the previous generation
             } else if (isAlive && neighbours == 2) {
                 return true;
             }
             
-            //sets the cell dead if none of the previous conditions were true
+            ///sets the cell dead if none of the previous conditions were true
             return false;
         }
 
-        //returns the number of neighbours of a cell at given coordinates
+        ///returns the number of neighbours of a cell at given coordinates
         public int Neighbours(int x, int y) {
 
-            //saves the amount of neighbours while counting
+            ///saves the amount of neighbours while counting
             int cellsNextToField = 0;
 
-            //iterates through every field next to [x,y]
+            ///iterates through every field next to [x,y]
             for(int i = -1; i < 2; i++) {
 
                 for(int j = -1; j < 2; j++) {
 
-                    //Prevents counting the cell itself as a neighbour
+                    ///Prevents counting the cell itself as a neighbour
                     if (!(i == 0 && j == 0)){
                         
-                        //changes the coordinates to being on the other side if nessecary in case of over-/underflow
+                        ///changes the coordinates to being on the other side if nessecary in case of over-/underflow
                         Tuple<int,int> validPositions = CorrectIndex(x + j, y + i);
 
                         int xpos = validPositions.Item1;
                         int ypos = validPositions.Item2;
 
-                        //increments the amount of neighbours if the neighbouring cell is alive (true)
+                        ///increments the amount of neighbours if the neighbouring cell is alive (true)
                         if (field[ypos, xpos]) {
                             cellsNextToField++;
                         }
@@ -139,50 +139,50 @@ namespace GameOfLife {
                 }
             }
 
-            //returns the amount of neighbours cell after iterating through and checking all of them
+            ///returns the amount of neighbours cell after iterating through and checking all of them
             return cellsNextToField;
         }
         
-        //returns a tuple(Item1: correct X coordinate, Item2: correct Y coordinate) with coordinates that are inverted in case of over-/underflow
+        ///returns a tuple(Item1: correct X coordinate, Item2: correct Y coordinate) with coordinates that are inverted in case of over-/underflow
         public Tuple<int, int> CorrectIndex(int x, int y) {
             
 
-            //checks for underflow and starts on the other side
+            ///checks for underflow and starts on the other side
             if (x == -1) {
                 x = width - 1;
 
-            //checks for overflow and starts on the other side
+            ///checks for overflow and starts on the other side
             } else if (x == width) {
                 x = 0;
             }
             
 
-            //checks for underflow and starts on the other side
+            ///checks for underflow and starts on the other side
             if (y == -1) {
                 y = height - 1;
 
-            //checks for overflow and starts on the other side
+            ///checks for overflow and starts on the other side
             } else if (y == height) {
                 y = 0;
             }
 
-            //returns a tuple with values that have been changed only in case of over-/underflow
+            ///returns a tuple with values that have been changed only in case of over-/underflow
             return new Tuple<int,int>(x,y);
         }
 
-        //Searches until a pattern is repeated
-        //Return: Item1 = start of the sequence; Item2 = end of the sequence
+        ///Searches until a pattern is repeated
+        ///Return: Item1 = start of the sequence; Item2 = end of the sequence
         public Tuple<int,int> FindPattern() {
 
-            //indicates if a duplicate grid was found
-            //function is finished when it is true
+            ///indicates if a duplicate grid was found
+            ///function is finished when it is true
             bool duplicateFound = false;
 
-            //indicates the start and the end of the repeating sequence
+            ///indicates the start and the end of the repeating sequence
             int patternStart = 0;
             int patternEnd = 0;
 
-            //Searches for Duplicates in existing list
+            ///Searches for Duplicates in existing list
             for (int i = 0; i < allGens.Count; i++) {
                 
                 //TODO: explain Predicate
@@ -190,21 +190,21 @@ namespace GameOfLife {
                     return b.Cast<bool>().SequenceEqual(allGens[i].Cast<bool>());
                 };
 
-                //searches for duplicates in allGens before i
+                ///searches for duplicates in allGens before i
                 int duplicateIndex = allGens.GetRange(0,i).FindIndex(predicate);
 
-                //duplicateIndex is -1 when no duplicates are found
-                //so if duplicateIndex >= 0 a duplicate has been found
+                ///duplicateIndex is -1 when no duplicates are found
+                ///so if duplicateIndex >= 0 a duplicate has been found
                 if (duplicateIndex >= 0) {
 
-                    //updates duplicateFound
+                    ///updates duplicateFound
                     duplicateFound = true;
 
-                    //sets patternStart and patternEnd to duplicateIndex and i respectively
+                    ///sets patternStart and patternEnd to duplicateIndex and i respectively
                     patternStart = duplicateIndex;
                     patternEnd = i;
 
-                    //Breaks the for-loop
+                    ///Breaks the for-loop
                     i = allGens.Count;
 
 
@@ -212,13 +212,13 @@ namespace GameOfLife {
 
             }
             
-            //searches and creates new generations until a duplicate is found
+            ///searches and creates new generations until a duplicate is found
             while (!duplicateFound) {
 
-                //generates a new generation which will be checked for duplicates
+                ///generates a new generation which will be checked for duplicates
                 NextGeneration();
 
-                //algorithm is identical to the previous for-loop
+                ///algorithm is identical to the previous for-loop
 
                 Predicate<bool[,]> p = (bool[,] b) => { return b.Cast<bool>().SequenceEqual(allGens.Last().Cast<bool>()); };
 
@@ -236,7 +236,7 @@ namespace GameOfLife {
 
             }
             
-            //Returns a Tuple with the start and the end of the sequence
+            ///Returns a Tuple with the start and the end of the sequence
             return new Tuple<int, int>(patternStart, patternEnd);
 
         }

@@ -140,7 +140,7 @@ namespace GameOfLife {
             }
         }
 
-        //FUNCTIONS THAT AREN'T EVENTS
+        ///FUNCTIONS THAT AREN'T EVENTS
 
         public void NewTab(int width, int height, string tabName) {
 
