@@ -134,6 +134,11 @@ namespace GameOfLife {
             // 
             this.numericUpDownWidth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.numericUpDownWidth.Location = new System.Drawing.Point(507, 462);
+            this.numericUpDownWidth.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.numericUpDownWidth.Minimum = new decimal(new int[] {
             1,
             0,
@@ -152,6 +157,11 @@ namespace GameOfLife {
             // 
             this.numericUpDownHeight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.numericUpDownHeight.Location = new System.Drawing.Point(674, 462);
+            this.numericUpDownHeight.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.numericUpDownHeight.Minimum = new decimal(new int[] {
             1,
             0,
