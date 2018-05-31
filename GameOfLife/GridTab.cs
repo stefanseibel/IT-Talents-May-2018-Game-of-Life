@@ -144,5 +144,31 @@ namespace GameOfLife {
             this.Invalidate();
         }
 
+        public void InvertField() {
+
+            ///Iterates through every Cell
+            for (int i = 0; i < grid.height; i++) {
+
+                for (int j = 0; j < grid.width; j++) {
+                    //Inverts the cell
+                    grid.allGens[fieldIndex][i, j] = !grid.allGens[fieldIndex][i, j];
+                }
+            }
+
+
+            ///resets grid.allGens so that it only contains the currently shown generation
+            grid.allGens = new List<bool[,]> {
+                    grid.allGens[fieldIndex]
+                };
+
+            ///updates/resets the other related Attributes
+            grid.field = grid.allGens[0];
+            grid.generation = 1;
+            this.fieldIndex = 0;
+
+            ///refreshes the Drawing
+            this.Invalidate();
+        }
+
     }
 }
