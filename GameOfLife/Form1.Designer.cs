@@ -39,6 +39,7 @@ namespace GameOfLife {
             this.newGridToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonFindPattern = new System.Windows.Forms.Button();
+            this.buttonInvert = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarGen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHeight)).BeginInit();
@@ -239,12 +240,29 @@ namespace GameOfLife {
             this.buttonFindPattern.UseVisualStyleBackColor = false;
             this.buttonFindPattern.Click += new System.EventHandler(this.buttonFindPattern_Click);
             // 
+            // buttonInvert
+            // 
+            this.buttonInvert.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonInvert.BackColor = System.Drawing.Color.Goldenrod;
+            this.buttonInvert.FlatAppearance.BorderSize = 0;
+            this.buttonInvert.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonInvert.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonInvert.ForeColor = System.Drawing.Color.White;
+            this.buttonInvert.Location = new System.Drawing.Point(12, 434);
+            this.buttonInvert.Name = "buttonInvert";
+            this.buttonInvert.Size = new System.Drawing.Size(159, 37);
+            this.buttonInvert.TabIndex = 15;
+            this.buttonInvert.Text = "Invert Field";
+            this.buttonInvert.UseVisualStyleBackColor = false;
+            this.buttonInvert.Click += new System.EventHandler(this.buttonInvert_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1231, 529);
+            this.Controls.Add(this.buttonInvert);
             this.Controls.Add(this.buttonFindPattern);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.tabControl1);
@@ -293,6 +311,7 @@ namespace GameOfLife {
         private System.Windows.Forms.ToolStripMenuItem newGridToolStripMenuItem;
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonFindPattern;
+        private System.Windows.Forms.Button buttonInvert;
     }
 }
 

@@ -176,5 +176,9 @@ namespace GameOfLife {
 
             return false;
         }
+
+        private void buttonInvert_Click(object sender, EventArgs e) {
+            //TODO: invert field
+        }
     }
 }
