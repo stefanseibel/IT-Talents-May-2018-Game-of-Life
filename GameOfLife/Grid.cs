@@ -60,25 +60,6 @@ namespace GameOfLife {
             }
         }
 
-        //prints the Field to the console (for testing only)
-        public void PrintField(bool[,] field) {
-            for (int i = 0; i < height; i++) {
-
-                for (int j = 0; j < width; j++) {
-
-                    if (field[i,j]) {
-                        Console.Write("+ ");
-                    } else {
-                        Console.Write("- ");
-                    }
-                }
-
-                Console.WriteLine();
-            }
-
-            Console.WriteLine();
-        }
-
         // simulates a new generation based on the most recent field
         public void NextGeneration() {
 
@@ -189,29 +170,41 @@ namespace GameOfLife {
             return new Tuple<int,int>(x,y);
         }
 
+        //Searches until a pattern is repeated
+        //Return: Item1 = start of the sequence; Item2 = end of the sequence
         public Tuple<int,int> FindPattern() {
 
+            //indicates if a duplicate grid was found
+            //function is finished when it is true
             bool duplicateFound = false;
 
+            //indicates the start and the end of the repeating sequence
             int patternStart = 0;
             int patternEnd = 0;
 
             //Searches for Duplicates in existing list
             for (int i = 0; i < allGens.Count; i++) {
-                //TODO: maybe change order of getRange for better Runtime 
+                
+                //TODO: explain Predicate
+                Predicate<bool[,]> predicate = (bool[,] b) => {
+                    return b.Cast<bool>().SequenceEqual(allGens[i].Cast<bool>());
+                };
 
-                Predicate<bool[,]> p = (bool[,] b) => { return b.Cast<bool>().SequenceEqual(allGens[i].Cast<bool>()); };
+                //searches for duplicates in allGens before i
+                int duplicateIndex = allGens.GetRange(0,i).FindIndex(predicate);
 
-                int duplicateIndex = allGens.GetRange(0,i).FindIndex(p);
-
+                //duplicateIndex is -1 when no duplicates are found
+                //so if duplicateIndex >= 0 a duplicate has been found
                 if (duplicateIndex >= 0) {
 
+                    //updates duplicateFound
                     duplicateFound = true;
 
+                    //sets patternStart and patternEnd to duplicateIndex and i respectively
                     patternStart = duplicateIndex;
                     patternEnd = i;
 
-                    //Breaks the for loop
+                    //Breaks the for-loop
                     i = allGens.Count;
 
 
@@ -219,14 +212,19 @@ namespace GameOfLife {
 
             }
             
+            //searches and creates new generations until a duplicate is found
             while (!duplicateFound) {
 
+                //generates a new generation which will be checked for duplicates
                 NextGeneration();
+
+                //algorithm is identical to the previous for-loop
+
                 Predicate<bool[,]> p = (bool[,] b) => { return b.Cast<bool>().SequenceEqual(allGens.Last().Cast<bool>()); };
 
+                
                 int duplicateIndex = allGens.GetRange(0, allGens.Count - 1).FindIndex(p);
                 
-
                 if (duplicateIndex >= 0) {
 
                     duplicateFound = true;
@@ -237,11 +235,8 @@ namespace GameOfLife {
                 }
 
             }
-
-            Console.WriteLine(patternStart);
-            Console.WriteLine(patternEnd);
-            Console.WriteLine();
-
+            
+            //Returns a Tuple with the start and the end of the sequence
             return new Tuple<int, int>(patternStart, patternEnd);
 
         }

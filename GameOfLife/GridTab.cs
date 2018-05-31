@@ -64,9 +64,11 @@ namespace GameOfLife {
             int totalHeight = grid.height * gd.widthPerCell + (grid.height) * (int)gd.blackPen.Width;
 
             if (border < x && x < (border + totalWidth) && border < y && y < (border + totalHeight)) {
+
+                int totalWidthPerCell = totalWidth / grid.width;
                 
-                int posX = (x - border) / gd.widthPerCell;
-                int posY = (y - border) / gd.widthPerCell;
+                int posX = (x - border) / totalWidthPerCell;
+                int posY = (y - border) / totalWidthPerCell;
 
                 grid.allGens[fieldIndex][posY, posX] = !grid.allGens[fieldIndex][posY, posX];
 

@@ -109,7 +109,7 @@ namespace GameOfLife {
             this.buttonChangeSize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonChangeSize.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonChangeSize.ForeColor = System.Drawing.Color.Black;
-            this.buttonChangeSize.Location = new System.Drawing.Point(12, 434);
+            this.buttonChangeSize.Location = new System.Drawing.Point(342, 451);
             this.buttonChangeSize.Name = "buttonChangeSize";
             this.buttonChangeSize.Size = new System.Drawing.Size(159, 37);
             this.buttonChangeSize.TabIndex = 5;
@@ -132,7 +132,7 @@ namespace GameOfLife {
             // numericUpDownWidth
             // 
             this.numericUpDownWidth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.numericUpDownWidth.Location = new System.Drawing.Point(177, 445);
+            this.numericUpDownWidth.Location = new System.Drawing.Point(507, 462);
             this.numericUpDownWidth.Minimum = new decimal(new int[] {
             1,
             0,
@@ -150,7 +150,7 @@ namespace GameOfLife {
             // numericUpDownHeight
             // 
             this.numericUpDownHeight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.numericUpDownHeight.Location = new System.Drawing.Point(344, 445);
+            this.numericUpDownHeight.Location = new System.Drawing.Point(674, 462);
             this.numericUpDownHeight.Minimum = new decimal(new int[] {
             1,
             0,
@@ -170,6 +170,8 @@ namespace GameOfLife {
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.HotTrack = true;
+            this.tabControl1.ImeMode = System.Windows.Forms.ImeMode.Katakana;
             this.tabControl1.Location = new System.Drawing.Point(18, 44);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
@@ -199,7 +201,7 @@ namespace GameOfLife {
             // newGridToolStripMenuItem
             // 
             this.newGridToolStripMenuItem.Name = "newGridToolStripMenuItem";
-            this.newGridToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newGridToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.newGridToolStripMenuItem.Text = "New Grid";
             this.newGridToolStripMenuItem.Click += new System.EventHandler(this.newGridToolStripMenuItem_Click);
             // 
@@ -229,7 +231,7 @@ namespace GameOfLife {
             this.buttonFindPattern.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonFindPattern.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonFindPattern.ForeColor = System.Drawing.Color.White;
-            this.buttonFindPattern.Location = new System.Drawing.Point(342, 480);
+            this.buttonFindPattern.Location = new System.Drawing.Point(177, 434);
             this.buttonFindPattern.Name = "buttonFindPattern";
             this.buttonFindPattern.Size = new System.Drawing.Size(159, 37);
             this.buttonFindPattern.TabIndex = 14;
