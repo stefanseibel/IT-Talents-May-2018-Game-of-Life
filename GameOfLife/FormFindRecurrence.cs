@@ -110,8 +110,14 @@ namespace GameOfLife {
 
             //TODO: Other Text for special patterns e. g. stable end
             //Updates the labelPrintResult to communicate the Result to the User
-            this.labelPrintResult.Text = "Recurring Pattern between Generations " + (patternStart + 1).ToString() + " and " + (patternEnd + 1).ToString();
-            
+            //Differnt Message depending on Style of the recurrence
+            if (patternEnd - patternStart == 1) {
+                this.labelPrintResult.Text = "Stable Pattern after Generation " + (patternStart + 1).ToString();
+            } else if (patternEnd - patternStart == 1) {
+                this.labelPrintResult.Text = "Pulsating Pattern between Generations " + (patternStart + 1).ToString() + " and " + (patternEnd + 1).ToString();
+            } else {
+                this.labelPrintResult.Text = "Recurring Pattern between Generations " + (patternStart + 1).ToString() + " and " + (patternEnd + 1).ToString();
+            }
             //Selects the last Generation in the grid if new Generations have been created
             if (this.grid.generation == (patternEnd + 1)) { 
                 this.form.selectedTab.fieldIndex = patternEnd;

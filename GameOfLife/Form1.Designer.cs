@@ -40,6 +40,7 @@ namespace GameOfLife {
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonFindPattern = new System.Windows.Forms.Button();
             this.buttonInvert = new System.Windows.Forms.Button();
+            this.alsPNGExportierenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarGen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHeight)).BeginInit();
@@ -204,7 +205,8 @@ namespace GameOfLife {
             // ToolStripMenuItemFile
             // 
             this.ToolStripMenuItemFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newGridToolStripMenuItem});
+            this.newGridToolStripMenuItem,
+            this.alsPNGExportierenToolStripMenuItem});
             this.ToolStripMenuItemFile.Name = "ToolStripMenuItemFile";
             this.ToolStripMenuItemFile.Size = new System.Drawing.Size(61, 20);
             this.ToolStripMenuItemFile.Text = "Options";
@@ -212,7 +214,7 @@ namespace GameOfLife {
             // newGridToolStripMenuItem
             // 
             this.newGridToolStripMenuItem.Name = "newGridToolStripMenuItem";
-            this.newGridToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.newGridToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.newGridToolStripMenuItem.Text = "New Grid";
             this.newGridToolStripMenuItem.Click += new System.EventHandler(this.newGridToolStripMenuItem_Click);
             // 
@@ -266,6 +268,13 @@ namespace GameOfLife {
             this.buttonInvert.UseVisualStyleBackColor = false;
             this.buttonInvert.Click += new System.EventHandler(this.buttonInvert_Click);
             // 
+            // alsPNGExportierenToolStripMenuItem
+            // 
+            this.alsPNGExportierenToolStripMenuItem.Name = "alsPNGExportierenToolStripMenuItem";
+            this.alsPNGExportierenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.alsPNGExportierenToolStripMenuItem.Text = "Als PNG exportieren";
+            this.alsPNGExportierenToolStripMenuItem.Click += new System.EventHandler(this.alsPNGExportierenToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -289,7 +298,7 @@ namespace GameOfLife {
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Game of Life";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Invalidated += new System.Windows.Forms.InvalidateEventHandler(this.Form1_Invalidate);
             this.Resize += new System.EventHandler(this.Form1_Resize);
@@ -321,6 +330,7 @@ namespace GameOfLife {
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonFindPattern;
         private System.Windows.Forms.Button buttonInvert;
+        private System.Windows.Forms.ToolStripMenuItem alsPNGExportierenToolStripMenuItem;
     }
 }
 

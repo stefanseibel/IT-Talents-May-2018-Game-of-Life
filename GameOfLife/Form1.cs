@@ -236,8 +236,7 @@ namespace GameOfLife {
 
         }
 
-
-
+        //Says if a form of a given Type is open
         private bool FormOpened(Type formType) {
 
             foreach(Form openForm in Application.OpenForms) {
@@ -249,9 +248,29 @@ namespace GameOfLife {
             return false;
         }
 
+        //Event is called when the "Invert Field" Button is pressed
         private void buttonInvert_Click(object sender, EventArgs e) {
-
+            
             selectedTab.InvertField();
+        }
+
+        //draws a BitMap of the control
+        private Bitmap DrawGridToBitmap(System.Windows.Forms.Control control) {
+            Bitmap bitmap = new Bitmap(control.Width, control.Height);
+            Graphics graphics = Graphics.FromImage(bitmap);
+            Rectangle rectangle = control.RectangleToScreen(control.ClientRectangle);
+            graphics.CopyFromScreen(rectangle.Location, Point.Empty, control.Size);
+            return bitmap;
+        }
+
+
+        private void alsPNGExportierenToolStripMenuItem_Click(object sender, EventArgs e) {
+            //draws a bitMap of the selectedTab
+            Bitmap b = DrawGridToBitmap(selectedTab);
+            
+            //Saves the Bitmap as png
+            b.Save(selectedTab.Text + ".png", System.Drawing.Imaging.ImageFormat.Png);
+            
         }
     }
 }
